@@ -18,6 +18,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.11.4",
     "@pinia/nuxt": "^0.5.1",
     "nuxt-primevue": "^0.3.1"
   }

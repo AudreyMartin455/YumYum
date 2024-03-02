@@ -11,7 +11,7 @@ await callOnce(website.fetch)
 
 <template>
 
-  <div>
+  <div class="text-amber-600">
     {{type}}
   </div>
 
