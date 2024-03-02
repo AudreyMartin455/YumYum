@@ -11,8 +11,8 @@ await callOnce(website.fetch)
 
 <template>
 
-  <div class="text-amber-600">
-    {{type}}
+  <div class="bg-primary">
+    <Button label="Nouveau" icon="pi pi-check" iconPos="right" />
   </div>
 
 </template>

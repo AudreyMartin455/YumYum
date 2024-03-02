@@ -1,13 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt','nuxt-primevue','@nuxtjs/tailwindcss'],
+  modules: ['@pinia/nuxt','nuxt-primevue'],
   primevue: {
     usePrimeVue: true,
-    cssLayerOrder: 'reset,primevue',
     components: {
       include: '*',
     }
   },
-  css: ['primevue/resources/themes/aura-light-green/theme.css']
+  css: ['primevue/resources/themes/aura-light-green/theme.css','~/assets/css/main.css']
 })
