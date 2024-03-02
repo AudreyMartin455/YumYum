@@ -1,0 +1,3 @@
+{"uuid":"776991cd-d418-40cc-9c84-325cfd44932f","label":"Lasagnes","createdOn":{"$$date":1709406980956},"updatedOn":{"$$date":1709406980956},"_id":"OjmCN3cglKCneMzY"}
+{"uuid":"bde91120-9eab-481b-b283-8c1f3fb83305","createdOn":{"$$date":1709402411552},"updatedOn":{"$$date":1709402411552},"_id":"eQpn5TcpgxQv87R6"}
+{"uuid":"16aaf6fb-d719-464b-aa42-63c6943c2bb9","label":"Lasagnes","ingredients":[{"amount":100,"unit":"ML","ingredient":{"label":"Béchamel","tags":["string"]}}],"steps":[{"order":1,"label":"Préchauffer le four"}],"timePrep":30,"timeCook":150,"image":"string","difficulty":"EASY","tags":["string"],"createdOn":{"$$date":1709407836016},"updatedOn":{"$$date":1709407836016},"_id":"sacOaV2dku4yWh0q"}

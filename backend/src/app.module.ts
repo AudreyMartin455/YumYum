@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common';
 import {RecipeController} from "./controllers/recipe.controller";
-import {RecipeService} from "./services/recipe.service";
-import {IRecipeService} from "./services/irecipe.service";
+import {ServiceModule} from "./services/service.module";
+import {DaoModule} from "./repositories/dao.module";
+import {MapperModule} from "./mappers/mapper.module";
 
 @Module({
-  imports: [],
+  imports: [DaoModule, ServiceModule, MapperModule],
   controllers: [RecipeController],
-  providers: [{
-    provide: IRecipeService,
-    useClass: RecipeService
-  }],
 })
-export class AppModule {}
+export class AppModule {
+}
