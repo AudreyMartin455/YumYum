@@ -20,6 +20,7 @@ await recipeStore.getRecipes(type).catch(error => console.log(error))
       <Heading :variant="'h1'">{{title()}}</Heading>
       <Button label="Nouveau" icon="pi pi-plus" iconPos="right" />
     </div>
+    <Filters/>
     <div v-if="recipeStore.recipes?.length > 0" class="padding-8 cards">
       <Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
         <template #header>
@@ -31,7 +32,7 @@ await recipeStore.getRecipes(type).catch(error => console.log(error))
           <span v-if="recipe.timeCook" class="timeCook">Cuisson: {{recipe.timeCook}} min <i class="pi pi-hourglass"></i></span>
         </template>
         <template #content>
-          <Chip style="background-color:#5457cd;; color: white; margin-right: 8px" v-for="ingredient in recipe.amountIngredients" :label="ingredient.ingredient.label" />
+          <Chip style="border: solid 1px #5457cd; color: #5457cd; margin-right: 8px" v-for="ingredient in recipe.amountIngredients" :label="ingredient.ingredient.label" />
         </template>
         <template #footer>
           <div class="flex place-content-end">
