@@ -1,21 +1,3 @@
-.test{
-    background-color: lightblue;
-}
-
-.flex-col{
-    display: flex;
-    flex-direction: column;
-}
-
-.flex-row{
-    display: flex;
-    flex-direction: column;
-}
-
-.justify-items-end {
-    justify-items: end;
-}
-
-.items-center{
-    align-items: center;
-}
+@import './flex.css';
+@import './padding.css';
+@import './margin.css';
