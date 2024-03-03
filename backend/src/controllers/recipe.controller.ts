@@ -52,6 +52,7 @@ export class RecipeController {
         {summary: 'Create a new recipe', description: 'Create a recipe'}
     )
     public post(@Body() recipe: RecipeDto): Observable<RecipeDto> {
+        Logger.log('POST RECIPE')
         return this.recipeService.create(this.recipeMapper.toEntity(recipe)).pipe(
             map((recipe) => this.recipeMapper.toDto(recipe))
         )

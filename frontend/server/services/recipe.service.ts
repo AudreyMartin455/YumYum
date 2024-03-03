@@ -8,3 +8,7 @@ import {logger} from "@nuxt/kit";
 export const getRecipes = async (type: DishesType): Promise<AxiosResponse<Recipe[]>> => {
     return await axios.get('http://localhost:3000/recipe?type=' + type);
 }
+
+export const postRecipe = async (body: Recipe): Promise<AxiosResponse<Recipe>> => {
+    return await axios.post('http://localhost:3000/recipe', body);
+}

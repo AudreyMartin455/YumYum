@@ -14,7 +14,7 @@ export interface RecipeEntity extends AbstractEntity {
     timeCook?: number,
     difficulty: Difficulty,
     image?: string,
-    tags: Tag[]
+    tags: string[]
     type: DishesType
 }
 

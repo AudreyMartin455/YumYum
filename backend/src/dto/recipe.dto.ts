@@ -42,7 +42,7 @@ export class RecipeDto {
     image?: string;
 
     @ApiProperty()
-    tags: Tag[]
+    tags: string[]
 
     @ApiProperty({ example: 'DISHES' })
     type: DishesType

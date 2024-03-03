@@ -3,9 +3,9 @@ import type {Step} from "~/stores/models/step.model";
 import type {Tag} from "~/stores/models/tag.type";
 
 export interface Recipe {
-    uuid: string,
-    createdOn: Date,
-    updateOn: Date,
+    uuid?: string,
+    createdOn?: Date,
+    updateOn?: Date,
     label: string;
     amountIngredients: AmountIngredient[],
     steps: Step[],
@@ -13,7 +13,7 @@ export interface Recipe {
     timeCook?: number,
     difficulty: Difficulty,
     image?: string,
-    tags: Tag[],
+    tags: string[],
     type: DishesType,
 }
 
