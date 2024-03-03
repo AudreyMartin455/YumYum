@@ -9,8 +9,8 @@ export class RecipeService implements IRecipeService {
 
     constructor(private recipeDao: RecipeDao) {
     }
-    getAll(): Observable<String> {
-        return of("Hello");
+    getAll(): Observable<RecipeEntity[]> {
+        return this.recipeDao.getAllRecipe();
     }
 
     create(recipe: RecipeEntity): Observable<RecipeEntity> {

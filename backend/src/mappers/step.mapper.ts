@@ -22,10 +22,10 @@ export class StepMapper {
         }
     }
     public allToDto(steps: StepEntity[]): StepDto[] {
-        return steps.map(step => this.toDto(step))
+        return steps?.map(step => this.toDto(step))
     }
 
     public allToEntity(steps: StepDto[]): StepEntity[] {
-        return steps.map(step => this.toEntity(step))
+        return steps?.map(step => this.toEntity(step))
     }
 }

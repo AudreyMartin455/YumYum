@@ -23,7 +23,7 @@ export abstract class AbstractDao<D extends AbstractEntity> {
     }
 
     create(document: D): Observable<D> {
-        this.logger.log(`Create ${this.collectionName}`, document);
+        this.logger.debug(`Create ${this.collectionName}`, document);
         document.createdOn = new Date();
         document.updatedOn = new Date();
         document.uuid = uuidv4();
@@ -31,7 +31,7 @@ export abstract class AbstractDao<D extends AbstractEntity> {
     }
 
     update(document: D): Observable<unknown> {
-        this.logger.log(`Update ${this.collectionName}`, document);
+        this.logger.debug(`Update ${this.collectionName}`, document);
         document.updatedOn = new Date();
         return from(this.db.asyncUpdate({ uuid: document.uuid }, document));
     }

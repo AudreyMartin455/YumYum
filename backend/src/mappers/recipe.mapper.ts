@@ -5,6 +5,7 @@ import {AmountIngredientDto} from "../dto/amount-ingredient.dto";
 import {StepDto} from "../dto/step.dto";
 import {AmountIngredientMapper} from "./amount-ingredient.mapper";
 import {StepMapper} from "./step.mapper";
+import {AmountIngredientEntity} from "../entities/amount-ingredient.entity";
 
 @Injectable()
 export class RecipeMapper {
@@ -16,13 +17,14 @@ export class RecipeMapper {
         return <RecipeDto>{
             uuid: recipe.uuid,
             label: recipe.label,
-            amountIngredients: this.amountIngredientMapper.allToDto(recipe.amountIngredients),
-            steps: this.stepMapper.allToDto(recipe.steps),
+            amountIngredients: this.amountIngredientMapper?.allToDto(recipe.amountIngredients),
+            steps: this.stepMapper?.allToDto(recipe.steps),
             timePrep: recipe.timePrep,
             timeCook: recipe.timeCook,
             image: recipe.image,
             difficulty: recipe.difficulty,
-            tags: recipe.tags
+            tags: recipe.tags,
+            type: recipe.type
         }
     }
 
@@ -36,7 +38,16 @@ export class RecipeMapper {
             timeCook: recipe.timeCook,
             image: recipe.image,
             difficulty: recipe.difficulty,
-            tags: recipe.tags
+            tags: recipe.tags,
+            type: recipe.type
         }
+    }
+
+    public allToDto(recipes: RecipeEntity[]): RecipeDto[] {
+        return recipes.map(recipe => this.toDto(recipe))
+    }
+
+    public allToEntity(recipes: RecipeDto[]): RecipeEntity[] {
+        return recipes.map(recipe => this.toEntity(recipe))
     }
 }

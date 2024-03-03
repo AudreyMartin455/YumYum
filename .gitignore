@@ -27,6 +27,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+frontend/.nuxt
+frontend/.output
 
 # System Files
 .DS_Store

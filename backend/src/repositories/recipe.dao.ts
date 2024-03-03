@@ -9,6 +9,11 @@ export class RecipeDao extends AbstractDao<RecipeEntity>{
     constructor() {
         super('recipe');
     }
+
+    public getAllRecipe(): Observable<RecipeEntity[]> {
+        return this.findAll();
+    }
+
     public createRecipe(recipe: RecipeEntity): Observable<RecipeEntity> {
         return this.create(recipe)
     }

@@ -32,10 +32,10 @@ export class AmountIngredientMapper {
         }
     }
     public allToDto(amounts: AmountIngredientEntity[]): AmountIngredientDto[] {
-        return amounts.map(amount => this.toDto(amount))
+        return amounts?.map(amount => this.toDto(amount))
     }
 
     public allToEntity(amounts: AmountIngredientDto[]): AmountIngredientEntity[] {
-        return amounts.map(amount => this.toEntity(amount))
+        return amounts?.map(amount => this.toEntity(amount))
     }
 }

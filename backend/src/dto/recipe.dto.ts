@@ -4,6 +4,7 @@ import {AmountIngredientDto} from "./amount-ingredient.dto";
 import {StepDto} from "./step.dto";
 import {ApiProperty} from "@nestjs/swagger";
 import {IsArray} from 'class-validator';
+import {DishesType} from "../entities/dishes.type";
 
 //TODO Mettre uuid, createdOn, updatedOn en readonly sur swagger
 export class RecipeDto {
@@ -42,4 +43,7 @@ export class RecipeDto {
 
     @ApiProperty()
     tags: Tag[]
+
+    @ApiProperty({ example: 'DISHES' })
+    type: DishesType
 }
