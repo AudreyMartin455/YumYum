@@ -25,20 +25,20 @@ await callOnce( async () => {
     <div class="padding-8 cards">
       <Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
         <template #header>
-          <img alt="user header" src="~/assets/images/default-placeholder.png" style="width: 30rem"/>
+          <NuxtImg style="width:30rem; height: 30rem" :src="recipe.image ? recipe.image : 'default-placeholder.png'"/>
         </template>
         <template #title>{{recipe.label}}</template>
-        <template #subtitle>Card subtitle</template>
+        <template #subtitle>
+          <span v-if="recipe.timePrep">Préparation: {{recipe.timePrep}} min <i class="pi pi-hourglass"></i></span>
+          <span v-if="recipe.timeCook" class="timeCook">Cuisson: {{recipe.timeCook}} min <i class="pi pi-hourglass"></i></span>
+        </template>
         <template #content>
-          <p class="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-            quas!
-          </p>
+          <Chip style="background-color:#5457cd;; color: white; margin-right: 8px" v-for="ingredient in recipe.amountIngredients" :label="ingredient.ingredient.label" />
         </template>
         <template #footer>
-          <div class="flex gap-3 mt-1">
-            <Button label="Cancel" severity="secondary" outlined class="w-full" />
-            <Button label="Save" class="w-full" />
+          <div class="flex place-content-end">
+            <Button style="margin-right: 16px"icon="pi pi-pencil" />
+            <Button icon="pi pi-cart-plus" />
           </div>
         </template>
       </Card>
@@ -47,6 +47,10 @@ await callOnce( async () => {
 </template>
 
 <style>
+.timeCook{
+  margin-left: 16px;
+}
+
 .cards {
   margin-top: 24px;
   display: grid;

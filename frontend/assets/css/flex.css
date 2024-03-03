@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.place-content-end{
+    place-content: end;
+}
+
 .place-content-between{
     place-content: space-between;
 }
