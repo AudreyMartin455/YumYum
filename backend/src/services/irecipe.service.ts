@@ -2,7 +2,7 @@ import {Observable} from "rxjs";
 import {RecipeEntity} from "../entities/recipe.entity";
 
 export interface IRecipeService {
-    getAll(): Observable<RecipeEntity[]>;
+    getAll(filters?: {[key:string]:any}): Observable<RecipeEntity[]>;
     create(recipe: RecipeEntity): Observable<RecipeEntity>
 }
 

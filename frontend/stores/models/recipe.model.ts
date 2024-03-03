@@ -18,4 +18,4 @@ export interface Recipe {
 }
 
 export type Difficulty = 'EASY' | 'MEDIUM'| 'DIFFICULT'
-export type DishesType = 'DISHES' | 'DESSERTS' | 'BREAKFAST'
+export type DishesType = 'DISH' | 'DESSERT' | 'BREAKFAST'

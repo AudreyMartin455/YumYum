@@ -6,5 +6,5 @@ import {logger} from "@nuxt/kit";
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export const getRecipes = async (type: DishesType): Promise<AxiosResponse<Recipe[]>> => {
-    return await axios.get('http://localhost:3000/recipe');
+    return await axios.get('http://localhost:3000/recipe?type=' + type);
 }

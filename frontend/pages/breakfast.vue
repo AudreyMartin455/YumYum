@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const type = "Breakfast"
+import type {DishesType} from "~/stores/models/recipe.model";
+
+const type: DishesType = "BREAKFAST"
 </script>
 
 <template>

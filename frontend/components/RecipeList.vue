@@ -5,15 +5,13 @@ import {useRecipeStore} from "~/stores/recipe";
 const { type } = defineProps(["type"])
 const title = () => {
   switch (type) {
-    case 'Dishes': return 'Plats';
-    case 'Desserts': return 'Desserts';
-    case 'Breakfast': return 'Petit-déjeuner'
+    case 'DISH': return 'Plats';
+    case 'DESSERT': return 'Desserts';
+    case 'BREAKFAST': return 'Petit-déjeuner'
   }
 }
 const recipeStore = useRecipeStore()
-await callOnce( async () => {
-  await recipeStore.getRecipes('DISHES')
-}).catch(error => console.log(error))
+await recipeStore.getRecipes(type).catch(error => console.log(error))
 </script>
 
 <template>
@@ -22,7 +20,7 @@ await callOnce( async () => {
       <Heading :variant="'h1'">{{title()}}</Heading>
       <Button label="Nouveau" icon="pi pi-plus" iconPos="right" />
     </div>
-    <div class="padding-8 cards">
+    <div v-if="recipeStore.recipes?.length > 0" class="padding-8 cards">
       <Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
         <template #header>
           <NuxtImg style="width:30rem; height: 30rem" :src="recipe.image ? recipe.image : 'default-placeholder.png'"/>
