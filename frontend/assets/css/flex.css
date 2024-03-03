@@ -9,7 +9,7 @@
 
 .flex-row{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .place-items-end {
@@ -22,4 +22,8 @@
 
 .place-content-between{
     place-content: space-between;
+}
+
+.wrap{
+    flex-wrap: wrap;
 }

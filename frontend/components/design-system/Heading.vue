@@ -1,11 +1,5 @@
 <script setup lang="ts">
 const { variant } = defineProps(["variant"])
-
-
-const website = useWebsiteStore()
-
-await callOnce(website.fetch)
-
 </script>
 
 <template>

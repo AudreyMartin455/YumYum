@@ -10,23 +10,24 @@ const title = () => {
     case 'Breakfast': return 'Petit-déjeuner'
   }
 }
-const website = useRecipeStore()
-await callOnce(website.fetch)
+const recipeStore = useRecipeStore()
+await callOnce( async () => {
+  await recipeStore.getRecipes('DISHES')
+}).catch(error => console.log(error))
 </script>
 
 <template>
-  <div class="padding-16">
+  <div class="padding-24">
     <div class="flex place-content-between padding-8">
       <Heading :variant="'h1'">{{title()}}</Heading>
       <Button label="Nouveau" icon="pi pi-plus" iconPos="right" />
     </div>
-
-    <div class="padding-8">
-      <Card style="width: 25rem; overflow: hidden">
+    <div class="padding-8 cards">
+      <Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
         <template #header>
-          <img alt="user header" src="~/assets/images/default-placeholder.png" style="width: 25rem"/>
+          <img alt="user header" src="~/assets/images/default-placeholder.png" style="width: 30rem"/>
         </template>
-        <template #title>Advanced Card</template>
+        <template #title>{{recipe.label}}</template>
         <template #subtitle>Card subtitle</template>
         <template #content>
           <p class="m-0">
@@ -44,3 +45,12 @@ await callOnce(website.fetch)
     </div>
   </div>
 </template>
+
+<style>
+.cards {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 24px
+}
+</style>
