@@ -8,5 +8,8 @@ export default defineNuxtConfig({
       include: '*',
     }
   },
+  app: {
+    pageTransition: { name: 'dishes/new', mode: 'out-in' }
+  },
   css: ['primevue/resources/themes/aura-light-green/theme.css','~/assets/css/main.css']
 })

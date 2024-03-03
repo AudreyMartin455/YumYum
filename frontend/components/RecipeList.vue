@@ -1,25 +1,10 @@
 <script setup lang="ts">
-import Heading from "~/components/design-system/Heading.vue";
 import {useRecipeStore} from "~/stores/recipe";
-
-const { type } = defineProps(["type"])
-const title = () => {
-  switch (type) {
-    case 'DISH': return 'Plats';
-    case 'DESSERT': return 'Desserts';
-    case 'BREAKFAST': return 'Petit-déjeuner'
-  }
-}
 const recipeStore = useRecipeStore()
-await recipeStore.getRecipes(type).catch(error => console.log(error))
 </script>
 
 <template>
-  <div class="padding-24">
-    <div class="flex place-content-between padding-8">
-      <Heading :variant="'h1'">{{title()}}</Heading>
-      <Button label="Nouveau" icon="pi pi-plus" iconPos="right" />
-    </div>
+  <div>
     <Filters/>
     <div v-if="recipeStore.recipes?.length > 0" class="padding-8 cards">
       <Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">

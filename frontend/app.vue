@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import 'primeicons/primeicons.css'
-import {PrimeIcons} from "primevue/api";
 
 const menuItems = [
     {
