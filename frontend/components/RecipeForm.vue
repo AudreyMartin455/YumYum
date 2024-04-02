@@ -4,6 +4,7 @@ import type {AmountIngredient} from "~/stores/models/amount-ingredient.model";
 import type {Difficulty, Recipe} from "~/stores/models/recipe.model";
 import type {Ref} from "vue";
 import {useRecipeStore} from "~/stores/recipe";
+
 const recipeStore = useRecipeStore()
 
 const props = defineProps(['dishType'])
@@ -19,17 +20,23 @@ const form: Ref<Recipe> = ref(<Recipe>{
   type: props.dishType
 })
 
-const difficulties = [{value:'EASY', label : 'Facile'}, {value:'MEDIUM', label : 'Moyen'}, {value:'DIFFICULT', label : 'Difficile'}]
+const difficulties = [{value: 'EASY', label: 'Facile'}, {value: 'MEDIUM', label: 'Moyen'}, {
+  value: 'DIFFICULT',
+  label: 'Difficile'
+}]
 const updateAmounts = function (amounts: AmountIngredient[]) {
   form.value.amountIngredients = amounts
 }
-const updateSteps= function (steps: Step[]) {
+const updateSteps = function (steps: Step[]) {
   form.value.steps = steps;
 }
-const submit = async function() {
-  console.log(form.value);
-  await recipeStore.createRecipe(form.value);
+const submit = async function () {
+  await recipeStore.createRecipe(form.value).then(async () => {
+
+    await navigateTo(`/${props.dishType === 'DISH' ? 'dishes' : props.dishType === 'DESSERT' ? 'desserts' : props.dishType === 'BREAKFAST' ? 'breakfast' : 'ingredients'}`)
+  });
 }
+
 </script>
 
 <template>
@@ -37,12 +44,13 @@ const submit = async function() {
     <form class="padding-24" style="margin-top: 16px" @submit.prevent="submit">
       <Card>
         <template #content>
-          <InputText  placeholder="URL image" v-model="form.image"/>
+          <InputText placeholder="URL image" v-model="form.image"/>
           <NuxtImg v-if="form.image != null && form.image !== ''" :src="form.image"/>
           <InputText placeholder="Label" v-model="form.label"/>
           <InputNumber placeholder="Temps de préparation (min)" v-model="form.timePrep"/>
           <InputNumber placeholder="Temps de cuisson (min)" id="timeCook" v-model="form.timeCook"/>
-          <Dropdown v-model="form.difficulty" :options="difficulties" placeholder="Difficulté" optionLabel="label" optionValue="value"/>
+          <Dropdown v-model="form.difficulty" :options="difficulties" placeholder="Difficulté" optionLabel="label"
+                    optionValue="value"/>
           <Chips placeholder="tags" v-model="form.tags"/>
           <StepInputList @onChange="updateSteps($event)"/>
           <AmountInputList @onChange="updateAmounts($event)"/>

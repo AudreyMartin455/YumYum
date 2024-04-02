@@ -1,5 +1,4 @@
 import {Difficulty} from "../entities/difficulty.type";
-import {Tag} from "../entities/category.type";
 import {AmountIngredientDto} from "./amount-ingredient.dto";
 import {StepDto} from "./step.dto";
 import {ApiProperty} from "@nestjs/swagger";

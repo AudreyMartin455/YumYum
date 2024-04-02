@@ -8,17 +8,15 @@ import {
     Inject,
     Logger,
     Param,
-    Patch,
     Post,
+    Put,
     Query
 } from '@nestjs/common';
 import {IRecipeService} from "../services/irecipe.service";
 import {map, Observable} from "rxjs";
 import {RecipeMapper} from "../mappers/recipe.mapper";
 import {RecipeDto} from "../dto/recipe.dto";
-import {ApiBody, ApiConsumes, ApiOperation, ApiQuery, ApiTags} from "@nestjs/swagger";
-import {SchemaObjectFactory} from "@nestjs/swagger/dist/services/schema-object-factory";
-import {RecipeEntity} from "../entities/recipe.entity";
+import {ApiConsumes, ApiOperation, ApiQuery, ApiTags} from "@nestjs/swagger";
 import {DishesType} from "../entities/dishes.type";
 
 @ApiTags('Recipe Controller')
@@ -33,16 +31,21 @@ export class RecipeController {
         required: false
     })
     getAll(@Query('type') type?: DishesType): Observable<RecipeDto[]> {
-        Logger.log('GET ALL RECIPES')
-        const filters = { type };
+        Logger.log(`GET ALL RECIPES ${type}`)
+        let filters: { type: DishesType };
+        if (type != null) {
+            filters = {type};
+        }
         return this.recipeService.getAll(filters).pipe(
             map((recipes) => this.recipeMapper.allToDto(recipes))
         );
     }
 
     @Get('/:uuid')
-    get(@Param('uuid') uuid: string): Observable<String> {
-        return ;
+    get(@Param('uuid') uuid: string): Observable<RecipeDto> {
+        return this.recipeService.get(uuid).pipe(
+            map((recipe) => this.recipeMapper.toDto(recipe))
+        );
     }
 
     @Post()
@@ -58,13 +61,13 @@ export class RecipeController {
         )
     }
 
-    @Patch('/:uuid')
+    @Put('/:uuid')
     patch(@Param('uuid') uuid: string): Observable<String> {
-        return ;
+        return;
     }
 
     @Delete('/:uuid')
     delete(@Param('uuid') uuid: string): Observable<void> {
-        return;
+        return this.recipeService.delete(uuid);
     }
 }

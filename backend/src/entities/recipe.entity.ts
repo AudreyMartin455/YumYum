@@ -2,7 +2,6 @@ import {AbstractEntity} from "./abstract.entity";
 import {AmountIngredientEntity} from "./amount-ingredient.entity";
 import {StepEntity} from "./step.entity";
 import {Difficulty} from "./difficulty.type";
-import {Tag} from "./category.type";
 import {DishesType} from "./dishes.type";
 
 

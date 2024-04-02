@@ -2,21 +2,26 @@
 import 'primeicons/primeicons.css'
 
 const menuItems = [
-    {
-      route: '/dishes',
-      label: 'Plats',
-      icon: 'dish-icon.png',
-    },
-    {
-      route: '/desserts',
-      label: 'Desserts',
-      icon: 'dessert-icon.png',
-    },
-    {
-      route: '/breakfast',
-      label: 'Petit-déjeuner',
-      icon: 'breakfast-icon.png',
-    }
+  {
+    route: '/dishes',
+    label: 'Plats',
+    icon: 'dish-icon.png',
+  },
+  {
+    route: '/desserts',
+    label: 'Desserts',
+    icon: 'dessert-icon.png',
+  },
+  {
+    route: '/breakfast',
+    label: 'Petit-déjeuner',
+    icon: 'breakfast-icon.png',
+  },
+  {
+    route: '/ingredients',
+    label: 'Ingrédients',
+    icon: 'ingredient-icon.png',
+  }
 ]
 </script>
 
@@ -39,7 +44,7 @@ const menuItems = [
 </template>
 
 <style>
-.p-menuitem-icon, .p-menuitem-text{
+.p-menuitem-icon, .p-menuitem-text {
   color: #10b981;
   line-height: 32px;
   font-size: 24px;
