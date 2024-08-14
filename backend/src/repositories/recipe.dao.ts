@@ -1,23 +1,23 @@
-import {Injectable, Logger} from "@nestjs/common";
+import {Injectable} from "@nestjs/common";
 import {RecipeEntity} from "../entities/recipe.entity";
 import {AbstractDao} from "./abstract.dao";
 import {Observable} from "rxjs";
 
 @Injectable()
-export class RecipeDao extends AbstractDao<RecipeEntity>{
+export class RecipeDao extends AbstractDao<RecipeEntity> {
 
     constructor() {
         super('recipe');
     }
 
-    public getAllRecipe(filters: {[key:string]:any}): Observable<RecipeEntity[]> {
-        if(filters != null){
+    public getAllRecipe(filters?: { [key: string]: any }): Observable<RecipeEntity[]> {
+        if (filters != null) {
             return this.findAllByFilters(filters)
         }
         return this.findAll();
     }
 
-    public getRecipe(uuid:string): Observable<RecipeEntity> {
+    public getRecipe(uuid: string): Observable<RecipeEntity> {
         return this.findByUuid(uuid);
     }
 
@@ -27,5 +27,9 @@ export class RecipeDao extends AbstractDao<RecipeEntity>{
 
     public deleteRecipe(uuid: string): Observable<void> {
         return this.delete(uuid) as Observable<void>;
+    }
+
+    public updateRecipe(recipe: RecipeEntity): Observable<RecipeEntity> {
+        return this.update(recipe);
     }
 }

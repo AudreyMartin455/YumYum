@@ -22,7 +22,7 @@ export class IngredientController {
 
     @Get('/:uuid')
     get(@Param('uuid') uuid: string): Observable<IngredientDto> {
-        Logger.log('GET INGREDIENT')
+        Logger.log(`GET INGREDIENT ${uuid}`)
         return this.ingredientService.get(uuid).pipe(
             map((ingredient) => this.ingredientMapper.toDto(ingredient))
         );
@@ -48,7 +48,7 @@ export class IngredientController {
 
     @Delete('/:uuid')
     delete(@Param('uuid') uuid: string): Observable<void> {
-        Logger.log('DELETE INGREDIENT')
+        Logger.log(`DELETE INGREDIENT ${uuid}`)
         return this.ingredientService.delete(uuid);
     }
 }

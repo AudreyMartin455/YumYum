@@ -43,6 +43,7 @@ export class RecipeController {
 
     @Get('/:uuid')
     get(@Param('uuid') uuid: string): Observable<RecipeDto> {
+        Logger.log(`GET RECIPE ${uuid}`)
         return this.recipeService.get(uuid).pipe(
             map((recipe) => this.recipeMapper.toDto(recipe))
         );
@@ -62,8 +63,11 @@ export class RecipeController {
     }
 
     @Put('/:uuid')
-    patch(@Param('uuid') uuid: string): Observable<String> {
-        return;
+    patch(@Param('uuid') uuid: string, @Body() recipe: RecipeDto): Observable<RecipeDto> {
+        Logger.log(`PUT RECIPE ${uuid}`)
+        return this.recipeService.update(this.recipeMapper.toEntity(recipe)).pipe(
+            map((recipe) => this.recipeMapper.toDto(recipe))
+        );
     }
 
     @Delete('/:uuid')

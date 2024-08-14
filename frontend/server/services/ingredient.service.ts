@@ -8,3 +8,7 @@ export const getIngredients = async (): Promise<AxiosResponse<Ingredient[]>> => 
 export const postIngredient = async (body: Ingredient): Promise<AxiosResponse<Ingredient>> => {
     return await axios.post('http://localhost:3000/ingredient', body);
 }
+
+export const deleteIngredient = async (uuid: string): Promise<AxiosResponse<void>> => {
+    return await axios.delete(`http://localhost:3000/ingredient/${uuid}`);
+}

@@ -1,6 +1,10 @@
 <script setup lang="ts">
-
 import Heading from "~/components/design-system/Heading.vue";
+import {useIngredientStore} from "~/stores/ingredient";
+
+const ingredientStore = useIngredientStore()
+ingredientStore.getIngredients().catch(error => console.log(error))
+
 </script>
 
 <template>

@@ -16,9 +16,9 @@ await recipeStore.getRecipes("DESSERT").catch(error => console.log(error))
           v-slot="{ navigate }"
       >
         <Button label="Nouveau" icon="pi pi-plus" iconPos="right" @click="navigate"
-                role="link" />
+                role="link"/>
       </router-link>
     </div>
-    <RecipeList/>
+    <RecipeList dish-type="DESSERT"/>
   </div>
 </template>

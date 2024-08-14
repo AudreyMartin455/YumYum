@@ -30,14 +30,14 @@ export abstract class AbstractDao<D extends AbstractEntity> {
         return from(this.db.asyncInsert(document));
     }
 
-    update(document: D): Observable<unknown> {
+    update(document: D): Observable<D> {
         this.logger.debug(`Update ${this.collectionName}`, document);
         document.updatedOn = new Date();
-        return from(this.db.asyncUpdate({ uuid: document.uuid }, document));
+        return from(this.db.asyncUpdate({uuid: document.uuid}, document)) as Observable<D>;
     }
 
     delete(uuid: string): Observable<unknown> {
-        return from(this.db.asyncRemove({ uuid: uuid }));
+        return from(this.db.asyncRemove({uuid: uuid}));
     }
 
     findAll(): Observable<D[]> {
@@ -50,8 +50,8 @@ export abstract class AbstractDao<D extends AbstractEntity> {
     }
 
 
-    findByUuid(uid: string): Observable<D> {
-        return this.findOne({ uid: uid });
+    findByUuid(uuid: string): Observable<D> {
+        return this.findOne({uuid: uuid});
     }
 
 
@@ -60,7 +60,7 @@ export abstract class AbstractDao<D extends AbstractEntity> {
     }
 
 
-    clearCollection():Observable<unknown>  {
+    clearCollection(): Observable<unknown> {
         return from(this.db.asyncRemove({}));
     }
 }

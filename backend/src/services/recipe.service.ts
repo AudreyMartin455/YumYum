@@ -1,6 +1,6 @@
 import {IRecipeService} from "./irecipe.service";
 import {Injectable} from "@nestjs/common";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {RecipeEntity} from "../entities/recipe.entity";
 import {RecipeDao} from "../repositories/recipe.dao";
 
@@ -9,7 +9,8 @@ export class RecipeService implements IRecipeService {
 
     constructor(private recipeDao: RecipeDao) {
     }
-    getAll(filters?: {[key:string]:any}): Observable<RecipeEntity[]> {
+
+    getAll(filters?: { [key: string]: any }): Observable<RecipeEntity[]> {
         return this.recipeDao.getAllRecipe(filters);
     }
 
@@ -23,5 +24,9 @@ export class RecipeService implements IRecipeService {
 
     delete(uuid: string): Observable<void> {
         return this.recipeDao.deleteRecipe(uuid);
+    }
+
+    update(recipe: RecipeEntity): Observable<RecipeEntity> {
+        return this.recipeDao.updateRecipe(recipe);
     }
 }

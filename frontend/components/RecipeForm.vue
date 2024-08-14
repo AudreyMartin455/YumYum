@@ -4,6 +4,7 @@ import type {AmountIngredient} from "~/stores/models/amount-ingredient.model";
 import type {Difficulty, Recipe} from "~/stores/models/recipe.model";
 import type {Ref} from "vue";
 import {useRecipeStore} from "~/stores/recipe";
+import {useIngredientStore} from "~/stores/ingredient";
 
 const recipeStore = useRecipeStore()
 
@@ -31,8 +32,13 @@ const updateSteps = function (steps: Step[]) {
   form.value.steps = steps;
 }
 const submit = async function () {
+  const referentialIngredient = useIngredientStore().ingredients;
+  form.value.amountIngredients = form.value.amountIngredients.map((amount) => {
+    amount.ingredient = referentialIngredient.find(ingredient => ingredient.uuid === amount.ingredient.uuid) ?? amount.ingredient
+    return amount
+  })
+  console.log(form.value)
   await recipeStore.createRecipe(form.value).then(async () => {
-
     await navigateTo(`/${props.dishType === 'DISH' ? 'dishes' : props.dishType === 'DESSERT' ? 'desserts' : props.dishType === 'BREAKFAST' ? 'breakfast' : 'ingredients'}`)
   });
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Heading from "~/components/design-system/Heading.vue";
 import {useRecipeStore} from "~/stores/recipe";
-const route = useRoute()
+
 const recipeStore = useRecipeStore()
 await recipeStore.getRecipes("DISH").catch(error => console.log(error))
 </script>
@@ -16,10 +16,10 @@ await recipeStore.getRecipes("DISH").catch(error => console.log(error))
           v-slot="{ navigate }"
       >
         <Button label="Nouveau" icon="pi pi-plus" iconPos="right" @click="navigate"
-                role="link" />
+                role="link"/>
       </router-link>
     </div>
-    <RecipeList/>
+    <RecipeList dish-type="DISH"/>
     <NuxtPage/>
   </div>
 </template>

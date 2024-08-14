@@ -13,13 +13,13 @@ export default {
     }
   },
   methods: {
-    addStep: function ()  {
+    addStep: function () {
       this.steps.push(<Step>{
         order: this.steps.length + 1,
         label: ''
       })
     },
-    removeStep: function (removableIndex: number)  {
+    removeStep: function (removableIndex: number) {
       this.steps = this.steps.filter((_, index) => index !== removableIndex)
           .map((step, index) => {
             return {...step, order: index + 1}
@@ -41,8 +41,8 @@ export default {
 <template>
   <div>
     <div v-for="(step, index) in steps">
-      {{step.order}}
-      <Textarea v-model="step.label" rows="5" cols="30" />
+      {{ step.order }}
+      <Textarea v-model="step.label" rows="5" cols="30"/>
       <Button v-if="steps.length > 1" severity="danger" icon="pi pi-minus-circle" @click="removeStep(index)"/>
       <Button v-if="index === steps.length - 1" icon="pi pi-plus" @click="addStep"/>
     </div>

@@ -2,6 +2,19 @@
 import {useRecipeStore} from "~/stores/recipe";
 
 const recipeStore = useRecipeStore()
+
+const props = defineProps(['dishType'])
+let baseRoute = '';
+if (props.dishType === 'DISH') {
+  baseRoute = 'dishes/'
+}
+if (props.dishType === 'BREAKFAST') {
+  baseRoute = 'breakfast/'
+}
+if (props.dishType === 'DESSERT') {
+  baseRoute = 'desserts/'
+}
+
 </script>
 
 <template>
@@ -23,7 +36,14 @@ const recipeStore = useRecipeStore()
         </template>
         <template #footer>
           <div class="flex place-content-end">
-            <Button style="margin-right: 16px" icon="pi pi-pencil"/>
+            <router-link
+                :to="baseRoute + recipe.uuid"
+                custom
+                v-slot="{ navigate }"
+            >
+              <Button style="margin-right: 16px" icon="pi pi-pencil" @click="navigate"
+                      role="link"/>
+            </router-link>
             <Button icon="pi pi-cart-plus"/>
           </div>
         </template>
