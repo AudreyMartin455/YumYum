@@ -1,41 +1,30 @@
-<script lang="ts">
+<script setup lang="ts">
 import type {Step} from "~/stores/models/step.model";
 
+const emits = defineEmits(['onChange'])
+const props = defineProps(['steps'])
 
-export default {
-  name: 'RecipeForm',
-  data() {
-    return {
-      steps: [<Step>{
-        order: 1,
-        label: ''
-      }] as Step[]
-    }
-  },
-  methods: {
-    addStep: function () {
-      this.steps.push(<Step>{
-        order: this.steps.length + 1,
-        label: ''
-      })
-    },
-    removeStep: function (removableIndex: number) {
-      this.steps = this.steps.filter((_, index) => index !== removableIndex)
-          .map((step, index) => {
-            return {...step, order: index + 1}
-          })
-    },
-  },
-  watch: {
-    steps: {
-      immediate: true,
-      handler(updatedSteps) {
-        console.log(updatedSteps)
-        this.$emit('onChange', updatedSteps)
-      }
-    }
-  }
+let steps = props.steps ?? [<Step>{
+  order: 1,
+  label: ''
+}] as Step[]
+
+const addStep = function () {
+  steps.push(<Step>{
+    order: steps.length + 1,
+    label: ''
+  })
 }
+const removeStep = function (removableIndex: number) {
+  steps = steps.filter((_, index) => index !== removableIndex)
+      .map((step, index) => {
+        return {...step, order: index + 1}
+      })
+}
+
+watch(steps, (newSteps) => {
+  emits('onChange', newSteps)
+})
 </script>
 
 <template>

@@ -9,16 +9,18 @@ import {useIngredientStore} from "~/stores/ingredient";
 const recipeStore = useRecipeStore()
 
 const props = defineProps(['dishType'])
+const recipe = recipeStore.recipe
 const form: Ref<Recipe> = ref(<Recipe>{
-  image: null as string | null,
-  label: '' as string,
-  timePrep: null as number | null,
-  timeCook: null as number | null,
-  difficulty: null as Difficulty | null,
-  steps: [] as Step[],
-  amountIngredients: [] as AmountIngredient[],
-  tags: [] as string[],
-  type: props.dishType
+  uuid: recipe?.uuid as string | null,
+  image: recipe?.image as string | null,
+  label: recipe?.label as string,
+  timePrep: recipe?.timePrep as number | null,
+  timeCook: recipe?.timeCook as number | null,
+  difficulty: recipe?.difficulty as Difficulty | null,
+  steps: recipe?.steps as Step[] | undefined,
+  amountIngredients: recipe?.amountIngredients as AmountIngredient[] | undefined,
+  tags: recipe?.tags ?? [] as string[],
+  type: recipe?.type ?? props.dishType
 })
 
 const difficulties = [{value: 'EASY', label: 'Facile'}, {value: 'MEDIUM', label: 'Moyen'}, {
@@ -37,10 +39,17 @@ const submit = async function () {
     amount.ingredient = referentialIngredient.find(ingredient => ingredient.uuid === amount.ingredient.uuid) ?? amount.ingredient
     return amount
   })
-  console.log(form.value)
-  await recipeStore.createRecipe(form.value).then(async () => {
-    await navigateTo(`/${props.dishType === 'DISH' ? 'dishes' : props.dishType === 'DESSERT' ? 'desserts' : props.dishType === 'BREAKFAST' ? 'breakfast' : 'ingredients'}`)
-  });
+  if (!recipe) {
+    await recipeStore.createRecipe(form.value).then(async () => {
+      await navigateTo(`/${props.dishType === 'DISH' ? 'dishes' : props.dishType === 'DESSERT' ? 'desserts' : props.dishType === 'BREAKFAST' ? 'breakfast' : 'ingredients'}`)
+    });
+  } else {
+    await recipeStore.updateRecipe(form.value).then(async () => {
+      await navigateTo(`/${props.dishType === 'DISH' ? 'dishes' : props.dishType === 'DESSERT' ? 'desserts' : props.dishType === 'BREAKFAST' ? 'breakfast' : 'ingredients'}`)
+    });
+
+  }
+
 }
 
 </script>
@@ -58,8 +67,8 @@ const submit = async function () {
           <Dropdown v-model="form.difficulty" :options="difficulties" placeholder="Difficulté" optionLabel="label"
                     optionValue="value"/>
           <Chips placeholder="tags" v-model="form.tags"/>
-          <StepInputList @onChange="updateSteps($event)"/>
-          <AmountInputList @onChange="updateAmounts($event)"/>
+          <StepInputList :steps="form.steps" @onChange="updateSteps($event)"/>
+          <AmountInputList :amounts="form.amountIngredients" @onChange="updateAmounts($event)"/>
         </template>
         <template #footer>
           <div class="flex place-content-end padding-8">

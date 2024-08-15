@@ -1,37 +1,30 @@
-<script lang="ts">
+<script setup lang="ts">
 import type {AmountIngredient} from "~/stores/models/amount-ingredient.model";
 import type {Ingredient} from "~/stores/models/ingredient.model";
 import {useIngredientStore} from "~/stores/ingredient";
 
-export default {
-  name: 'RecipeForm',
-  data() {
-    return {
-      units: [{label: '', value: 'PIECE'}, {label: 'ml', value: 'ML'}, {label: 'l', value: 'L'}, {
-        label: 'mg',
-        value: 'MG'
-      }, {label: 'g', value: 'G'}],
-      ingredients: useIngredientStore().ingredients,
-      amounts: [<AmountIngredient>{ingredient: <Ingredient>{}}] as AmountIngredient[],
-    }
-  },
-  methods: {
-    addAmount: function () {
-      this.amounts.push(<AmountIngredient>{ingredient: <Ingredient>{}})
-    },
-    removeAmount: function (removableIndex: number) {
-      this.amounts = this.amounts.filter((_, index) => index !== removableIndex)
-    },
-  },
-  watch: {
-    amounts: {
-      immediate: true,
-      handler(updatedAmounts) {
-        this.$emit('onChange', updatedAmounts)
-      }
-    }
-  }
-}
+const ingredientStore = useIngredientStore();
+const emits = defineEmits(['onChange'])
+const props = defineProps(['amounts'])
+
+const ingredients: Ingredient[] = ingredientStore.ingredients;
+console.log(ingredients)
+const units = [{label: '', value: 'PIECE'}, {label: 'ml', value: 'ML'}, {label: 'l', value: 'L'}, {
+  label: 'mg',
+  value: 'MG'
+}, {label: 'g', value: 'G'}];
+let amounts: AmountIngredient[] = props.amounts ?? [<AmountIngredient>{ingredient: <Ingredient>{}}];
+
+const addAmount = function () {
+  amounts.push(<AmountIngredient>{ingredient: <Ingredient>{}})
+};
+const removeAmount = function (removableIndex: number) {
+  amounts = amounts.filter((_, index) => index !== removableIndex)
+};
+
+watch(amounts, (newAmounts) => {
+  emits('onChange', newAmounts)
+})
 </script>
 
 <template>
@@ -40,7 +33,7 @@ export default {
       <div>
         <InputNumber placeholder="Quantité" v-model="amount.amount"/>
         <Dropdown v-model="amount.unit" :options="units" placeholder="Unité" optionLabel="label" optionValue="value"/>
-        <Dropdown v-model="amount.ingredient.uuid" :options="useIngredientStore().ingredients" placeholder="Ingrédient"
+        <Dropdown v-model="amount.ingredient.uuid" :options="ingredients" placeholder="Ingrédient"
                   optionLabel="label"
                   optionValue="uuid"/>
       </div>
