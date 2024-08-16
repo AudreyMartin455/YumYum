@@ -8,21 +8,20 @@ const emits = defineEmits(['onChange'])
 const props = defineProps(['amounts'])
 
 const ingredients: Ingredient[] = ingredientStore.ingredients;
-console.log(ingredients)
 const units = [{label: '', value: 'PIECE'}, {label: 'ml', value: 'ML'}, {label: 'l', value: 'L'}, {
   label: 'mg',
   value: 'MG'
 }, {label: 'g', value: 'G'}];
-let amounts: AmountIngredient[] = props.amounts ?? [<AmountIngredient>{ingredient: <Ingredient>{}}];
+let amounts = ref(props.amounts ?? [<AmountIngredient>{ingredient: <Ingredient>{}}]);
 
 const addAmount = function () {
-  amounts.push(<AmountIngredient>{ingredient: <Ingredient>{}})
+  amounts.value.push(<AmountIngredient>{ingredient: <Ingredient>{}})
 };
 const removeAmount = function (removableIndex: number) {
-  amounts = amounts.filter((_, index) => index !== removableIndex)
+  amounts.value = amounts.value.filter((_: AmountIngredient, index: number) => index !== removableIndex)
 };
 
-watch(amounts, (newAmounts) => {
+watch(amounts.value, (newAmounts) => {
   emits('onChange', newAmounts)
 })
 </script>

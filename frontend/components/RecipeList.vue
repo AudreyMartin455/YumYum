@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import {useRecipeStore} from "~/stores/recipe";
+import {useCartStore} from "~/stores/cart";
+import type {Recipe} from "~/stores/models/recipe.model";
 
 const recipeStore = useRecipeStore()
+const cartStore = useCartStore();
 
 const props = defineProps(['dishType'])
 let baseRoute = '';
@@ -13,6 +16,14 @@ if (props.dishType === 'BREAKFAST') {
 }
 if (props.dishType === 'DESSERT') {
   baseRoute = 'desserts/'
+}
+
+const addToCart = function (recipe: Recipe) {
+  cartStore.addToCart(recipe)
+}
+
+const removeToCart = function (recipe: Recipe) {
+  cartStore.removeToCart(recipe.uuid)
 }
 
 </script>
@@ -44,7 +55,7 @@ if (props.dishType === 'DESSERT') {
               <Button style="margin-right: 16px" icon="pi pi-pencil" @click="navigate"
                       role="link"/>
             </router-link>
-            <Button icon="pi pi-cart-plus"/>
+            <Button icon="pi pi-cart-plus" @click="addToCart(recipe)"/>
           </div>
         </template>
       </Card>

@@ -46,6 +46,7 @@ const unShowed = function () {
       </Column>
       <Column field="uuid" header="Actions">
         <template #body="slotProps">
+          <Button icon="pi pi-pencil" style="margin-right: 15px"/>
           <Button icon="pi pi-trash" @click="deleteIngredient(slotProps.data.uuid)" severity="danger"/>
         </template>
       </Column>

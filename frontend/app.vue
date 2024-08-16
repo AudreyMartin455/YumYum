@@ -21,6 +21,11 @@ const menuItems = [
     route: '/ingredients',
     label: 'Ingrédients',
     icon: 'ingredient-icon.png',
+  },
+  {
+    route: '/cart',
+    label: 'Panier',
+    icon: 'ingredient-icon.png'
   }
 ]
 </script>

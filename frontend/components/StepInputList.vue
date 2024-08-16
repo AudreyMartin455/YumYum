@@ -4,25 +4,26 @@ import type {Step} from "~/stores/models/step.model";
 const emits = defineEmits(['onChange'])
 const props = defineProps(['steps'])
 
-let steps = props.steps ?? [<Step>{
+let steps = ref(props.steps ?? [<Step>{
   order: 1,
   label: ''
-}] as Step[]
+}] as Step[])
+
 
 const addStep = function () {
-  steps.push(<Step>{
-    order: steps.length + 1,
+  steps.value.push(<Step>{
+    order: steps.value.length + 1,
     label: ''
   })
 }
-const removeStep = function (removableIndex: number) {
-  steps = steps.filter((_, index) => index !== removableIndex)
-      .map((step, index) => {
+const removeStep = (removableIndex: number) => {
+  steps.value = steps.value.filter((_: Step, index: number) => index !== removableIndex)
+      .map((step: Step, index: number) => {
         return {...step, order: index + 1}
       })
 }
 
-watch(steps, (newSteps) => {
+watch(steps.value, (newSteps) => {
   emits('onChange', newSteps)
 })
 </script>

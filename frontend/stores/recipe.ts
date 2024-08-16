@@ -22,6 +22,9 @@ export const useRecipeStore = defineStore('recipeStore', {
         },
         async deleteRecipe(uuid: string) {
             await deleteRecipe(uuid);
+        },
+        clearSelectedRecipe() {
+            this.recipe = undefined
         }
     }
 })

@@ -1,3 +1,9 @@
+{"uuid":"33d34902-7cd6-459f-80f2-fb1488aae2f9","createdOn":{"$$date":1723840488635},"updatedOn":{"$$date":1723840488635},"label":"Oignon","tags":["condiment"],"_id":"6ICubVchsteTJGhY"}
+{"uuid":"dc3303e9-144b-47a9-836f-ccee10ae8dc6","createdOn":{"$$date":1723840437356},"updatedOn":{"$$date":1723840437356},"label":"Poulet","tags":["viande"],"_id":"79kThdVxR8yVkQ9W"}
+{"uuid":"4acd5b72-1930-4b09-9e39-5098d88e0d20","createdOn":{"$$date":1723840478672},"updatedOn":{"$$date":1723840478672},"label":"Beurre de cacahuète","tags":[],"_id":"aDqWlB7ZIAC8l9QV"}
 {"uuid":"ec359541-2c27-46d7-b37f-2a97c00368d4","createdOn":{"$$date":1723670239014},"updatedOn":{"$$date":1723670239014},"label":"Gruyère","tags":["fromage","végétarien","laitage"],"_id":"g4Czksf3KfYmIZoI"}
+{"uuid":"82427f1e-0c2e-49de-bdc1-fb146723414c","createdOn":{"$$date":1723840499797},"updatedOn":{"$$date":1723840499797},"label":"Bouillon de légume","tags":[],"_id":"kBv7q2EdaA6KTDhi"}
 {"uuid":"248d5e22-5592-4a13-a21a-6e8fdf6ed063","createdOn":{"$$date":1723670210806},"updatedOn":{"$$date":1723670210806},"label":"Boeuf hachée","tags":["viande","viande rouge"],"_id":"mDXz42jIOOvBJRe5"}
 {"uuid":"23a0e2e5-3344-41d9-a134-3021e9727bce","createdOn":{"$$date":1723670150027},"updatedOn":{"$$date":1723670150027},"label":"Béchamel","tags":["laitage","végétarien","sauce"],"_id":"pYNryu7Myy79g7zF"}
+{"uuid":"093b783a-d52a-401e-ac7b-efb20824b55b","createdOn":{"$$date":1723840459965},"updatedOn":{"$$date":1723840459965},"label":"Chair de tomate","tags":["légume","végétarien"],"_id":"sBBCMFxER1MQOOV0"}
+{"uuid":"d29822ae-c023-4887-a0d5-3711f61e65c3","createdOn":{"$$date":1723840548762},"updatedOn":{"$$date":1723840548762},"label":"riz","tags":[],"_id":"uCNyBsZn3STCMt1s"}

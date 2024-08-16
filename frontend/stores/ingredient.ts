@@ -15,6 +15,6 @@ export const useIngredientStore = defineStore('ingredientStore', {
         },
         async deleteIngredient(uuid: string) {
             await deleteIngredient(uuid);
-        }
+        },
     }
 })

@@ -9,7 +9,6 @@ export const getRecipes = async (type: DishesType): Promise<AxiosResponse<Recipe
 }
 
 export const getRecipe = async (uuid: string): Promise<AxiosResponse<Recipe>> => {
-    console.log(uuid)
     return await axios.get('http://localhost:3000/recipe/' + uuid);
 }
 
