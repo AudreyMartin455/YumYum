@@ -18,10 +18,10 @@ const submit = async function () {
 
 <template>
 
-  <Button label="Créer" @click="visible = true"/>
+  <Button label="Nouveau" icon="pi pi-plus" iconPos="right" @click="visible = true"/>
 
   <Dialog v-model:visible="visible" modal header="Créer Ingrédient" :style="{ width: '50rem' }">
-    <form class="padding-24" style="margin-top: 16px" @submit.prevent="submit">
+    <form class="padding-xl" style="margin-top: 16px" @submit.prevent="submit">
 
       <InputText placeholder="Label" v-model="form.label" :style="{ width: '30rem'}"/>
       <Chips placeholder="tags" v-model="form.tags" :style="{ width: '30rem'}"/>

@@ -23,15 +23,15 @@ const addToCart = function (recipe: Recipe) {
 }
 
 const removeToCart = function (recipe: Recipe) {
-  cartStore.removeToCart(recipe.uuid)
+  cartStore.removeToCart(recipe.uuid!!)
 }
 
 </script>
 
 <template>
   <div>
-    <Filters/>
-    <div v-if="recipeStore.recipes?.length > 0" class="padding-8 cards">
+    <!--    <Filters/>-->
+    <div v-if="recipeStore.recipes?.length > 0" class="padding-md cards">
       <Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
         <template #header>
           <NuxtImg style="width:30rem; height: 30rem" :src="recipe.image ? recipe.image : 'default-placeholder.png'"/>

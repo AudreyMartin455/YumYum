@@ -16,6 +16,7 @@ const appConfig = useAppConfig()
           <li style="color: darkgreen">Supprimer un ingrédient</li>
           <li style="color: darkred">Modifier un ingrédient</li>
           <li style="color: darkgreen">Ajouter une recette au panier</li>
+          <li style="color: darkred">Supprimer une recette au panier</li>
           <li style="color: darkgreen">Voir la liste des plats ajoutés au panier</li>
           <li style="color: darkgreen">Générer une liste de course</li>
           <li style="color: darkgreen">Voir la liste de course</li>
@@ -74,6 +75,7 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Ajouter la possibilité de lier des panier au calendrier</li>
           <li style="color: darkred">Ajouter calorie/protéine par recette</li>
           <li style="color: darkred">Créer un executable</li>
+          <li style="color: darkred">Dark mode</li>
           <li style="color: darkred">Créer une view pour une recette et pouvoir la passer en mode édition (plutôt que
             avoir une page modification directement)
           </li>

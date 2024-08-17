@@ -7,8 +7,8 @@ await recipeStore.getRecipes("BREAKFAST").catch(error => console.log(error))
 </script>
 
 <template>
-  <div class="padding-24">
-    <div class="flex place-content-between padding-8">
+  <div class="padding-xl">
+    <div class="flex place-content-between padding-md">
       <Heading :variant="'h1'">Petit-déjeuner</Heading>
       <router-link
           to="/breakfast/new"

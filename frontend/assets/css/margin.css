@@ -1,11 +1,11 @@
-.margin-4{
+.margin-sm {
     margin: 4px;
 }
 
-.margin-8{
+.margin-md {
     margin: 8px;
 }
 
-.margin-16{
+.margin-lg {
     margin: 16px;
 }

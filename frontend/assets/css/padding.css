@@ -1,15 +1,15 @@
-.padding-4{
+.padding-sm {
     padding: 4px;
 }
 
-.padding-8{
+.padding-md {
     padding: 8px;
 }
 
-.padding-16{
+.padding-lg {
     padding: 16px;
 }
 
-.padding-24{
+.padding-xl {
     padding: 24px;
 }

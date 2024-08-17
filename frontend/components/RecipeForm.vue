@@ -84,7 +84,7 @@ const submit = async function () {
 
 <template>
   <div>
-    <form class="padding-24" style="margin-top: 16px" @submit.prevent="submit">
+    <form class="padding-xl" style="margin-top: 16px" @submit.prevent="submit">
       <Card v-if="form != undefined">
         <template #content>
           <InputText placeholder="URL image" v-model="form.image"/>
@@ -99,7 +99,7 @@ const submit = async function () {
           <AmountInputList :amounts="form.amountIngredients" @onChange="updateAmounts($event)"/>
         </template>
         <template #footer>
-          <div class="flex place-content-end padding-8">
+          <div class="flex place-content-end padding-md">
             <Button type="submit">Valider</Button>
           </div>
         </template>
