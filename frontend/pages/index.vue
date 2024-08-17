@@ -46,6 +46,7 @@ const appConfig = useAppConfig()
           </li>
           <li style="color: darkred">Les données d'une recette pas toujours à la modification d'une recette</li>
           <li style="color: darkred">Pouvoir mettre des décimales dans le montant d'un ingrédient</li>
+          <li style="color: darkred">Aligner le bouton "créer" de la liste d'ingrédient à droite</li>
           <li style="color: darkred">Dans la liste de course, pour les ingrédients en unité simple, apparition d'un
             undefined au lieu de rien du tout -> "1 undefined Oignon"
           </li>

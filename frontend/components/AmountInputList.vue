@@ -2,12 +2,19 @@
 import type {AmountIngredient} from "~/stores/models/amount-ingredient.model";
 import type {Ingredient} from "~/stores/models/ingredient.model";
 import {useIngredientStore} from "~/stores/ingredient";
+import type {Ref} from "vue";
 
 const ingredientStore = useIngredientStore();
 const emits = defineEmits(['onChange'])
 const props = defineProps(['amounts'])
 
-const ingredients: Ingredient[] = ingredientStore.ingredients;
+let ingredients: Ref<Ingredient[]> = ref([]);
+
+ingredientStore.getIngredients().catch(error => console.log(error)).finally(() => {
+  ingredients.value = ingredientStore.ingredients;
+})
+
+
 const units = [{label: '', value: 'PIECE'}, {label: 'ml', value: 'ML'}, {label: 'l', value: 'L'}, {
   label: 'mg',
   value: 'MG'
