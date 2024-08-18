@@ -26,6 +26,7 @@ const appConfig = useAppConfig()
         <ul>
           <li style="color: darkred">Amélioration l'aspect visuel de la création/modification d'une recette</li>
           <li style="color: darkred">Amélioration l'aspect visuel du panier et de la liste de course</li>
+          <li style="color: darkred">Indiquer le nombre de personne sur la recette</li>
           <li style="color: darkred">Rajouter des messages success en cas d'ajout au panier et de génération de liste
             réussi
           </li>
@@ -42,14 +43,15 @@ const appConfig = useAppConfig()
             ingrédient,
             200ml + 300g = 500ml
           </li>
-          <li style="color: darkred">Revoir le placement du bouton créer sur la liste d'ingrédient</li>
+          <li style="color: darkred">Ajouter un bouton clear dans la liste de course ou reset dès qu'on regnère</li>
+          <li style="color: darkgreen">Revoir le placement du bouton créer sur la liste d'ingrédient</li>
           <li style="color: darkgreen">Les ingredients se charge pas toujours chargé à la création/modification d'une
             recette
           </li>
           <li style="color: darkgreen">Les données d'une recette pas toujours chargé à la modification d'une recette
           </li>
           <li style="color: darkred">Pouvoir mettre des décimales dans le montant d'un ingrédient</li>
-          <li style="color: darkred">Dans la liste de course, pour les ingrédients en unité simple, apparition d'un
+          <li style="color: darkgreen">Dans la liste de course, pour les ingrédients en unité simple, apparition d'un
             undefined au lieu de rien du tout -> "1 undefined Oignon"
           </li>
           <li style="color: darkred">Revoir le visuel des chips sur une carte recette quand il y a beaucoup
@@ -66,6 +68,7 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Possibilité de rechercher une recherche dans la liste de recette</li>
           <li style="color: darkred">Pagination dans la liste de recette</li>
           <li style="color: darkred">Pagination dans la liste d'ingrédients</li>
+          <li style="color: darkred">Rajouter midi/soir sur une recette</li>
         </ul>
       </P-TabPanel>
       <P-TabPanel header="Version 3.x.x">
