@@ -5,8 +5,8 @@ const appConfig = useAppConfig()
 <template>
   <div>
     <h1>Version actuelle 0.0.0</h1>
-    <TabView>
-      <TabPanel header="Version 1.x.x">
+    <P-TabView>
+      <P-TabPanel header="Version 1.x.x">
         <h4>Features</h4>
         <ul>
           <li style="color: darkgreen">Créer une recette</li>
@@ -56,8 +56,8 @@ const appConfig = useAppConfig()
             d'ingrédient
           </li>
         </ul>
-      </TabPanel>
-      <TabPanel header="Version 2.x.x">
+      </P-TabPanel>
+      <P-TabPanel header="Version 2.x.x">
         <h4>Features</h4>
         <ul>
           <li style="color: darkred">Ajouter les cuillière à café et à soupe dans les unités d'ingrédient</li>
@@ -67,8 +67,8 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Pagination dans la liste de recette</li>
           <li style="color: darkred">Pagination dans la liste d'ingrédients</li>
         </ul>
-      </TabPanel>
-      <TabPanel header="Version 3.x.x">
+      </P-TabPanel>
+      <P-TabPanel header="Version 3.x.x">
         <h4>Features</h4>
         <ul>
           <li style="color: darkred">Ajouter un calendrier</li>
@@ -80,7 +80,7 @@ const appConfig = useAppConfig()
             avoir une page modification directement)
           </li>
         </ul>
-      </TabPanel>
-    </TabView>
+      </P-TabPanel>
+    </P-TabView>
   </div>
 </template>

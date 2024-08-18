@@ -30,11 +30,17 @@ watch(steps.value, (newSteps) => {
 
 <template>
   <div>
+    <Heading variant="h3" icon="edit_note">Préparation</Heading>
     <div v-for="(step, index) in steps">
-      {{ step.order }}
-      <Textarea v-model="step.label" rows="5" cols="30"/>
-      <Button v-if="steps.length > 1" severity="danger" icon="pi pi-minus-circle" @click="removeStep(index)"/>
-      <Button v-if="index === steps.length - 1" icon="pi pi-plus" @click="addStep"/>
+      <div class="flex flex-row"
+           style="place-content: center flex-start;align-items: center; margin: 8px">
+        <P-Textarea v-model="step.label" rows="5" cols="50" autoResize :placeholder="`Etape n°${index + 1}`"
+                    style="margin-right: 8px;"/>
+        <IconButton v-if="steps.length > 1" icon="remove" variant="filled" @click="removeStep(index)"/>
+      </div>
+      <div class="flex flex-row" style="justify-content: center">
+        <IconButton v-if="index === steps.length - 1" icon="add" variant="filled" @click="addStep"/>
+      </div>
     </div>
   </div>
 </template>

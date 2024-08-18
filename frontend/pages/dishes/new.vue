@@ -9,7 +9,7 @@ recipeStore.clearSelectedRecipe()
 
 <template>
   <div class="padding-xl">
-    <Heading variant="h1">Nouveau plat</Heading>
+    <Heading variant="h1" icon="edit_note">Nouveau plat</Heading>
 
     <RecipeForm dish-type="DISH"/>
   </div>

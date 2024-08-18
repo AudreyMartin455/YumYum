@@ -2,6 +2,23 @@
 @import './padding.css';
 @import './margin.css';
 
-body{
-    background-color: #f7f8f9;
+:root {
+    --primary: #37466B;
+    --secondary: #CF9957;
+    --action: #AA273C;
+    --background: #E9E9E9;
+    --surface: #FFFFFF;
+
+    --on_primary: #FFFFFF;
+    --on_secondary: #FFFFFF;
+    --on_action: #FFFFFF;
+    --on_background: #10002B;
+    --on_surface: #37466B;
+
+    body {
+        background-color: var(--background);
+        padding: 0;
+        margin: 0;
+    }
 }
+

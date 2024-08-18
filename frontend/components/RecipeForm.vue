@@ -5,6 +5,8 @@ import type {Difficulty, Recipe} from "~/stores/models/recipe.model";
 import type {Ref} from "vue";
 import {useRecipeStore} from "~/stores/recipe";
 import {useIngredientStore} from "~/stores/ingredient";
+import StepInputList from "~/components/StepInputList.vue";
+import AmountInputList from "~/components/AmountInputList.vue";
 
 const props = defineProps(['dishType'])
 const recipeStore = useRecipeStore()
@@ -20,8 +22,6 @@ const difficulties = [{value: 'EASY', label: 'Facile'}, {value: 'MEDIUM', label:
 }]
 
 const initModel = (recipe: Recipe | undefined) => {
-  console.log('init model')
-  console.log(recipe)
   form.value = <Recipe>{
     uuid: recipe?.uuid as string | null,
     image: recipe?.image as string | null,
@@ -84,26 +84,52 @@ const submit = async function () {
 
 <template>
   <div>
-    <form class="padding-xl" style="margin-top: 16px" @submit.prevent="submit">
-      <Card v-if="form != undefined">
+    <form class="padding-xl" style="margin-top: 16px; " @submit.prevent="submit">
+      <P-Card style="max-width: 60%; margin: auto" v-if="form != undefined">
         <template #content>
-          <InputText placeholder="URL image" v-model="form.image"/>
-          <NuxtImg v-if="form.image != null && form.image !== ''" :src="form.image"/>
-          <InputText placeholder="Label" v-model="form.label"/>
-          <InputNumber placeholder="Temps de préparation (min)" v-model="form.timePrep"/>
-          <InputNumber placeholder="Temps de cuisson (min)" id="timeCook" v-model="form.timeCook"/>
-          <Dropdown v-model="form.difficulty" :options="difficulties" placeholder="Difficulté" optionLabel="label"
-                    optionValue="value"/>
-          <Chips placeholder="tags" v-model="form.tags"/>
-          <StepInputList :steps="form.steps" @onChange="updateSteps($event)"/>
-          <AmountInputList :amounts="form.amountIngredients" @onChange="updateAmounts($event)"/>
+          <div class="flex flex-col">
+            <P-InputText placeholder="Nom" v-model="form.label" style="margin-bottom: 10px;"/>
+            <P-InputText placeholder="URL image" v-model="form.image" style="margin-bottom: 10px;"/>
+            <div style="width: auto;height:300px; overflow:hidden">
+              <div style="background-color: lightgrey; height: 100%">
+                <span style="display:flex; justify-content:center">prévisualisation image</span>
+              </div>
+              <NuxtImg v-if="form.image != null && form.image !== ''" :src="form.image"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-row">
+            <div style="min-width:60%; padding: 10px">
+              <div class="flex flex-row"
+                   style="place-content: center flex-start;align-items: center; margin-bottom: 10px">
+                <Icon icon="schedule" variant="outlined" color="primary" style="margin-right:8px"/>
+                <P-InputNumber placeholder="Temps de préparation (min)" v-model="form.timePrep"
+                               style="margin-right:15px; width:50%"/>
+                <Icon icon="schedule" variant="outlined" color="primary" style="margin-right:8px"/>
+                <P-InputNumber placeholder="Temps de cuisson (min)" id="timeCook" v-model="form.timeCook"
+                               style="width:50%"/>
+              </div>
+              <div class="flex flex-row"
+                   style="place-content: center flex-start;align-items: center; margin-bottom: 10px">
+                <Icon icon="help" variant="outlined" color="primary" style="margin-right:8px"/>
+                <P-Dropdown v-model="form.difficulty" :options="difficulties" placeholder="Difficulté"
+                            optionLabel="label"
+                            optionValue="value" style="width: 100%"/>
+
+              </div>
+              <StepInputList :steps="form.steps" @onChange="updateSteps($event)"/>
+            </div>
+
+            <AmountInputList style="padding: 10px" :amounts="form.amountIngredients" @onChange="updateAmounts($event)"/>
+          </div>
         </template>
         <template #footer>
           <div class="flex place-content-end padding-md">
-            <Button type="submit">Valider</Button>
+            <Button type="submit" variant="filled">Valider</Button>
           </div>
         </template>
-      </Card>
+      </P-Card>
     </form>
   </div>
 </template>

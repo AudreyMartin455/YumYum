@@ -16,7 +16,7 @@ const generate = () => {
     <div style="display: flex; flex-direction: column;width: 50%">
       <span>Recette(s) choisie(s):</span>
       <p v-for="recipe in recipes">- {{ recipe.label }}</p>
-      <Button label="Générer la liste de course" @click="generate"/>
+      <P-Button label="Générer la liste de course" @click="generate"/>
     </div>
     <div style="display: flex; flex-direction: column; width: 50%">
       <span>Liste de course:</span>

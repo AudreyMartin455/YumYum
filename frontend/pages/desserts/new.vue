@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
-import Heading from "~/components/design-system/Heading.vue";
+import RecipeForm from "~/components/RecipeForm.vue";
 </script>
 
 <template>
   <div class="padding-xl">
-    <Heading variant="h1">Nouveau dessert</Heading>
+    <Heading variant="h1" icon="edit_note">Nouveau dessert</Heading>
 
     <RecipeForm dish-type="DESSERT"/>
   </div>

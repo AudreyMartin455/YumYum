@@ -5,7 +5,7 @@ import Heading from "~/components/design-system/Heading.vue";
 <template>
   <div class="padding-xl">
     <div class="flex place-content-between padding-md">
-      <Heading :variant="'h1'">Ingrédients</Heading>
+      <Heading variant="h1" icon="edit">Ingrédients</Heading>
       <IngredientForm/>
     </div>
     <IngredientTable/>

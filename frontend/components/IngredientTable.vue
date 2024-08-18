@@ -32,25 +32,25 @@ const unShowed = function () {
 
 <template>
   <div>
-    <ConfirmDialog></ConfirmDialog>
-    <Message v-if="displayErrorMessage" severity="error" closable @close="unShowed()">
+    <P-ConfirmDialog></P-ConfirmDialog>
+    <P-Message v-if="displayErrorMessage" severity="error" closable @close="unShowed()">
       Suppression impossible, l'ingrédient est utilisé dans
       une recette.
-    </Message>
-    <DataTable :value="ingredientStore.ingredients">
-      <Column field="label" header="Label"></Column>
-      <Column field="tags" header="Tags">
+    </P-Message>
+    <P-DataTable :value="ingredientStore.ingredients">
+      <P-Column field="label" header="Label"></P-Column>
+      <P-Column field="tags" header="Tags">
         <template #body="slotProps">
-          <Tag v-for="tag in slotProps.data.tags" :value="tag" severity="info" style="margin-right: 5px"/>
+          <P-Tag v-for="tag in slotProps.data.tags" :value="tag" severity="info" style="margin-right: 5px"/>
         </template>
-      </Column>
-      <Column field="uuid" header="Actions">
+      </P-Column>
+      <P-Column field="uuid" header="Actions">
         <template #body="slotProps">
-          <Button icon="pi pi-pencil" style="margin-right: 15px"/>
-          <Button icon="pi pi-trash" @click="deleteIngredient(slotProps.data.uuid)" severity="danger"/>
+          <P-Button icon="pi pi-pencil" style="margin-right: 15px"/>
+          <P-Button icon="pi pi-trash" @click="deleteIngredient(slotProps.data.uuid)" severity="danger"/>
         </template>
-      </Column>
-    </DataTable>
+      </P-Column>
+    </P-DataTable>
   </div>
 </template>
 

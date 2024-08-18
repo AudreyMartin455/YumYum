@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type {Ref} from "vue";
-import Dialog from 'primevue/dialog';
 import type {Ingredient} from "~/stores/models/ingredient.model";
 
 const ingredientStore = useIngredientStore()
@@ -18,20 +17,20 @@ const submit = async function () {
 
 <template>
 
-  <Button label="Nouveau" icon="pi pi-plus" iconPos="right" @click="visible = true"/>
+  <Button variant="filled" icon="add" @click="visible = true">Nouveau</Button>
 
-  <Dialog v-model:visible="visible" modal header="Créer Ingrédient" :style="{ width: '50rem' }">
+  <P-Dialog v-model:visible="visible" modal header="Créer Ingrédient" :style="{ width: '50rem' }">
     <form class="padding-xl" style="margin-top: 16px" @submit.prevent="submit">
 
-      <InputText placeholder="Label" v-model="form.label" :style="{ width: '30rem'}"/>
-      <Chips placeholder="tags" v-model="form.tags" :style="{ width: '30rem'}"/>
+      <P-InputText placeholder="Label" v-model="form.label" :style="{ width: '30rem'}"/>
+      <P-Chips placeholder="tags" v-model="form.tags" :style="{ width: '30rem'}"/>
 
       <div class="flex justify-content-end gap-2">
-        <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-        <Button type="submit" label="Save" @click="visible = false"></Button>
+        <P-Button type="button" label="Cancel" severity="secondary" @click="visible = false"></P-Button>
+        <P-Button type="submit" label="Save" @click="visible = false"></P-Button>
       </div>
     </form>
-  </Dialog>
+  </P-Dialog>
 
 
 </template>

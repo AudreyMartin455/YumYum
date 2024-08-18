@@ -4,7 +4,7 @@ import Heading from "~/components/design-system/Heading.vue";
 
 <template>
   <div>
-    <Heading variant="h1">Modifier Plat</Heading>
+    <Heading variant="h1" icon="edit_note">Modifier Plat</Heading>
     <RecipeForm dish-type="DISH"/>
   </div>
 </template>

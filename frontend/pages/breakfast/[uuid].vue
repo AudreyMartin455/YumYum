@@ -5,6 +5,7 @@ import Heading from "~/components/design-system/Heading.vue";
 
 <template>
   <div>
-    <Heading variant="h1">Modifier ???</Heading>
+    <Heading variant="h1" icon="edit_note">Modifier Petit-déjeuner</Heading>
+    <RecipeForm dish-type="DISH"/>
   </div>
 </template>

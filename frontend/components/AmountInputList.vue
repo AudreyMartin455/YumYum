@@ -35,16 +35,28 @@ watch(amounts.value, (newAmounts) => {
 
 <template>
   <div>
+    <Heading variant="h3" icon="edit_note">Ingrédients</Heading>
     <div v-for="(amount, index) in amounts">
-      <div>
-        <InputNumber placeholder="Quantité" v-model="amount.amount"/>
-        <Dropdown v-model="amount.unit" :options="units" placeholder="Unité" optionLabel="label" optionValue="value"/>
-        <Dropdown v-model="amount.ingredient.uuid" :options="ingredients" placeholder="Ingrédient"
-                  optionLabel="label"
-                  optionValue="uuid"/>
+      <div class="flex flex-row" style="margin: 10px">
+        <P-InputNumber placeholder="Quantité" v-model="amount.amount" style="margin-right: 8px; width: 75px"/>
+        <P-Dropdown v-model="amount.unit" :options="units" placeholder="ml" optionLabel="label" optionValue="value"
+                    style="margin-right: 8px; width: 60px"/>
+        <P-Dropdown v-model="amount.ingredient.uuid" :options="ingredients" placeholder="Ingrédient"
+                    optionLabel="label"
+                    optionValue="uuid"
+                    style="width: 200px"
+        />
+        <IconButton v-if="amounts.length > 1" icon="remove" variant="filled" @click="removeAmount(index)"
+                    style="margin-left: 8px"/>
       </div>
-      <Button v-if="amounts.length > 1" severity="danger" icon="pi pi-minus-circle" @click="removeAmount(index)"/>
-      <Button v-if="index === amounts.length - 1" icon="pi pi-plus" @click="addAmount"/>
+
+      <IconButton v-if="index === amounts.length - 1" icon="pi pi-plus" @click="addAmount"/>
     </div>
   </div>
 </template>
+
+<style>
+.p-inputnumber input {
+  width: 100%;
+}
+</style>

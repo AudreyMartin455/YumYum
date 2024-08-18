@@ -32,7 +32,7 @@ const removeToCart = function (recipe: Recipe) {
   <div>
     <!--    <Filters/>-->
     <div v-if="recipeStore.recipes?.length > 0" class="padding-md cards">
-      <Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
+      <P-Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
         <template #header>
           <NuxtImg style="width:30rem; height: 30rem" :src="recipe.image ? recipe.image : 'default-placeholder.png'"/>
         </template>
@@ -43,7 +43,7 @@ const removeToCart = function (recipe: Recipe) {
               class="pi pi-hourglass"></i></span>
         </template>
         <template #content>
-          <Chip class="chip" v-for="ingredient in recipe.amountIngredients" :label="ingredient.ingredient.label"/>
+          <P-Chip class="chip" v-for="ingredient in recipe.amountIngredients" :label="ingredient.ingredient.label"/>
         </template>
         <template #footer>
           <div class="flex place-content-end">
@@ -52,13 +52,13 @@ const removeToCart = function (recipe: Recipe) {
                 custom
                 v-slot="{ navigate }"
             >
-              <Button style="margin-right: 16px" icon="pi pi-pencil" @click="navigate"
-                      role="link"/>
+              <IconButton style="margin-right: 16px" icon="edit" variant="filled" @click="navigate"
+                          role="link"/>
             </router-link>
-            <Button icon="pi pi-cart-plus" @click="addToCart(recipe)"/>
+            <IconButton icon="add_shopping_cart" variant="filled" @click="addToCart(recipe)"/>
           </div>
         </template>
-      </Card>
+      </P-Card>
     </div>
   </div>
 </template>
@@ -67,7 +67,7 @@ const removeToCart = function (recipe: Recipe) {
 .chip {
   border: solid 1px #5457cd;
   color: #5457cd;
-  margin-right: 8px
+  margin: 5px;
 }
 
 .timeCook {

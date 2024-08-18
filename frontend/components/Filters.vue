@@ -5,11 +5,11 @@ const tags = ref([])
 <template>
 
   <div class="flex-row padding-xl">
-    <FloatLabel>
+    <P-FloatLabel>
       <Chips id="chips" v-model="tags"/>
       <label for="chips">Tags</label>
-    </FloatLabel>
-    <Button icon="pi pi-search"/>
+    </P-FloatLabel>
+    <P-Button icon="pi pi-search"/>
   </div>
 
 </template>
