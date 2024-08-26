@@ -23,7 +23,7 @@ const removeStep = (removableIndex: number) => {
       })
 }
 
-watch(steps.value, (newSteps) => {
+watch(steps, (newSteps) => {
   emits('onChange', newSteps)
 })
 </script>
@@ -35,11 +35,13 @@ watch(steps.value, (newSteps) => {
       <div class="flex flex-row"
            style="place-content: center flex-start;align-items: center; margin: 8px">
         <P-Textarea v-model="step.label" rows="5" cols="50" autoResize :placeholder="`Etape n°${index + 1}`"
-                    style="margin-right: 8px;"/>
-        <IconButton v-if="steps.length > 1" icon="remove" variant="filled" @click="removeStep(index)"/>
+                    style="margin-right: 8px;width:100%"/>
+        <IconButton v-if="steps.length > 1" icon="remove" variant="filled" type="button" size="md"
+                    @click="removeStep(index)"/>
       </div>
       <div class="flex flex-row" style="justify-content: center">
-        <IconButton v-if="index === steps.length - 1" icon="add" variant="filled" @click="addStep"/>
+        <IconButton v-if="index === steps.length - 1" icon="add" variant="filled" type="button" size="md"
+                    @click="addStep"/>
       </div>
     </div>
   </div>

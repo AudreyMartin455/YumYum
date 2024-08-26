@@ -85,7 +85,7 @@ const submit = async function () {
 <template>
   <div>
     <form class="padding-xl" style="margin-top: 16px; " @submit.prevent="submit">
-      <P-Card style="max-width: 60%; margin: auto" v-if="form != undefined">
+      <P-Card style="max-width: 70%; margin: auto" v-if="form != undefined">
         <template #content>
           <div class="flex flex-col">
             <P-InputText placeholder="Nom" v-model="form.label" style="margin-bottom: 10px;"/>

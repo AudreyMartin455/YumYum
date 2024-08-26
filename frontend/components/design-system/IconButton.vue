@@ -5,21 +5,16 @@ defineProps(['variant', 'icon', 'type', 'disabled', 'size'])
 
 <template>
   <P-Button :type="type" :class="variant" :disabled="disabled" class="button">
-    <Icon :variant="variant" :icon="icon">{{ icon }}</Icon>
+    <Icon :variant="variant" :icon="icon" :size="size">{{ icon }}</Icon>
   </P-Button>
 </template>
 
 <style scoped>
 .button {
-  width: 32px;
-  height: 32px;
-  padding: 8px;
+  width: auto;
+  height: auto;
+  padding: 5px;
 }
-
-.md {
-
-}
-
 
 .filled {
   background-color: var(--action);

@@ -24,7 +24,7 @@ const appConfig = useAppConfig()
 
         <h4>Amélioration</h4>
         <ul>
-          <li style="color: darkred">Amélioration l'aspect visuel de la création/modification d'une recette</li>
+          <li style="color: darkgreen">Amélioration l'aspect visuel de la création/modification d'une recette</li>
           <li style="color: darkred">Amélioration l'aspect visuel du panier et de la liste de course</li>
           <li style="color: darkred">Indiquer le nombre de personne sur la recette</li>
           <li style="color: darkred">Rajouter des messages success en cas d'ajout au panier et de génération de liste
@@ -54,7 +54,7 @@ const appConfig = useAppConfig()
           <li style="color: darkgreen">Dans la liste de course, pour les ingrédients en unité simple, apparition d'un
             undefined au lieu de rien du tout -> "1 undefined Oignon"
           </li>
-          <li style="color: darkred">Revoir le visuel des chips sur une carte recette quand il y a beaucoup
+          <li style="color: darkgreen">Revoir le visuel des chips sur une carte recette quand il y a beaucoup
             d'ingrédient
           </li>
         </ul>
