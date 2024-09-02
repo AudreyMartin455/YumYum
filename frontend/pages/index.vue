@@ -11,7 +11,7 @@ const appConfig = useAppConfig()
         <ul>
           <li style="color: darkgreen">Créer une recette</li>
           <li style="color: darkgreen">Modification d'une recette</li>
-          <li style="color: darkred">Supprimer une recette</li>
+          <li style="color: darkgreen">Supprimer une recette</li>
           <li style="color: darkgreen">Créer un ingrédient</li>
           <li style="color: darkgreen">Supprimer un ingrédient</li>
           <li style="color: darkred">Modifier un ingrédient</li>
@@ -30,7 +30,7 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Rajouter des messages success en cas d'ajout au panier et de génération de liste
             réussi
           </li>
-          <li style="color: darkred">Remplacer le selecteur d'ingrédient par un autcomplete ou permettre de faire une
+          <li style="color: darkgreen">Remplacer le selecteur d'ingrédient par un autcomplete ou permettre de faire une
             recherche dans le select
             ans le formulaire de création/modification d'une recette
           </li>

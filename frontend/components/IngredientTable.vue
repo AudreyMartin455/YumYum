@@ -46,8 +46,8 @@ const unShowed = function () {
       </P-Column>
       <P-Column field="uuid" header="Actions">
         <template #body="slotProps">
-          <P-Button icon="pi pi-pencil" style="margin-right: 15px"/>
-          <P-Button icon="pi pi-trash" @click="deleteIngredient(slotProps.data.uuid)" severity="danger"/>
+          <IconButton icon="edit" variant="filled" style="margin-right: 15px"/>
+          <IconButton icon="delete" variant="filled" @click="deleteIngredient(slotProps.data.uuid)"/>
         </template>
       </P-Column>
     </P-DataTable>
