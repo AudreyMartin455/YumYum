@@ -4,10 +4,7 @@ import type {Step} from "~/stores/models/step.model";
 const emits = defineEmits(['onChange'])
 const props = defineProps(['steps'])
 
-let steps = ref(props.steps ?? [<Step>{
-  order: 1,
-  label: ''
-}] as Step[])
+let steps = ref(props.steps)
 
 
 const addStep = function () {

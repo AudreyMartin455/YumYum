@@ -12,6 +12,14 @@ const generate = () => {
 }
 </script>
 <template>
+  <P-Card style="max-width: 70%; margin: auto">
+    <P-Card>
+      
+    </P-Card>
+    <P-Card>
+
+    </P-Card>
+  </P-Card>
   <div style="display: flex; flex-direction: row">
     <div style="display: flex; flex-direction: column;width: 50%">
       <span>Recette(s) choisie(s):</span>

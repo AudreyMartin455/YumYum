@@ -7,6 +7,7 @@ import {useRecipeStore} from "~/stores/recipe";
 import {useIngredientStore} from "~/stores/ingredient";
 import StepInputList from "~/components/StepInputList.vue";
 import AmountInputList from "~/components/AmountInputList.vue";
+import type {Ingredient} from "~/stores/models/ingredient.model";
 
 const props = defineProps(['dishType'])
 const recipeStore = useRecipeStore()
@@ -29,8 +30,11 @@ const initModel = (recipe: Recipe | undefined) => {
     timePrep: recipe?.timePrep as number | null,
     timeCook: recipe?.timeCook as number | null,
     difficulty: recipe?.difficulty as Difficulty | null,
-    steps: recipe?.steps as Step[] | undefined,
-    amountIngredients: recipe?.amountIngredients as AmountIngredient[] | undefined,
+    steps: recipe?.steps ?? [<Step>{
+      order: 1,
+      label: ''
+    }],
+    amountIngredients: recipe?.amountIngredients as AmountIngredient[] ?? [<AmountIngredient>{ingredient: <Ingredient>{}}],
     tags: recipe?.tags ?? [] as string[],
     type: recipe?.type ?? props.dishType
   }

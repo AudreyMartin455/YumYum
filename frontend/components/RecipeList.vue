@@ -2,7 +2,9 @@
 import {useRecipeStore} from "~/stores/recipe";
 import {useCartStore} from "~/stores/cart";
 import type {Recipe} from "~/stores/models/recipe.model";
+import {useConfirm} from "primevue/useconfirm";
 
+const confirm = useConfirm();
 const recipeStore = useRecipeStore()
 const cartStore = useCartStore();
 
@@ -26,11 +28,24 @@ const removeToCart = function (recipe: Recipe) {
   cartStore.removeToCart(recipe.uuid!!)
 }
 
+const deleteRecipe = async function (uuid: string) {
+  confirm.require({
+    message: `Supprimer la recette ?`,
+    header: "Confirmation",
+    acceptLabel: 'Oui',
+    rejectLabel: 'Non',
+    accept: () => {
+      recipeStore.deleteRecipe(uuid).finally(() => recipeStore.getRecipes(props.dishType))
+    },
+  });
+}
+
 </script>
 
 <template>
   <div>
     <!--    <Filters/>-->
+    <P-ConfirmDialog></P-ConfirmDialog>
     <div v-if="recipeStore.recipes?.length > 0" class="padding-md cards">
       <P-Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">
         <template #header>
@@ -55,6 +70,7 @@ const removeToCart = function (recipe: Recipe) {
               <IconButton style="margin-right: 16px" icon="edit" variant="filled" @click="navigate"
                           role="link"/>
             </router-link>
+            <IconButton style="margin-right: 16px" icon="delete" variant="filled" @click="deleteRecipe(recipe.uuid!!)"/>
             <IconButton icon="add_shopping_cart" variant="filled" @click="addToCart(recipe)"/>
           </div>
         </template>

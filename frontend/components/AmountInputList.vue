@@ -20,7 +20,7 @@ const units = [{label: '', value: 'PIECE'}, {label: 'ml', value: 'ML'}, {label: 
   label: 'mg',
   value: 'MG'
 }, {label: 'g', value: 'G'}];
-let amounts = ref(props.amounts ?? [<AmountIngredient>{ingredient: <Ingredient>{}}]);
+let amounts = ref(props.amounts);
 
 const addAmount = function () {
   amounts.value.push(<AmountIngredient>{ingredient: <Ingredient>{}})
