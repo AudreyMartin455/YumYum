@@ -42,8 +42,11 @@ export class IngredientController {
     }
 
     @Put('/:uuid')
-    patch(@Param('uuid') uuid: string): Observable<String> {
-        return;
+    put(@Param('uuid') uuid: string, @Body() ingredient: IngredientDto): Observable<IngredientDto> {
+        Logger.log(`PUT INGREDIENT ${uuid}`)
+        return this.ingredientService.update(this.ingredientMapper.toEntity(ingredient)).pipe(
+            map((ingredient) => this.ingredientMapper.toDto(ingredient))
+        );
     }
 
     @Delete('/:uuid')

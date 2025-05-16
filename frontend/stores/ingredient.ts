@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import type {Ingredient} from "~/stores/models/ingredient.model";
-import {deleteIngredient, getIngredients, postIngredient} from "~/server/services/ingredient.service";
+import {deleteIngredient, getIngredients, postIngredient, putIngredient} from "~/server/services/ingredient.service";
 
 export const useIngredientStore = defineStore('ingredientStore', {
     state: () => ({
@@ -15,6 +15,9 @@ export const useIngredientStore = defineStore('ingredientStore', {
         },
         async deleteIngredient(uuid: string) {
             await deleteIngredient(uuid);
+        },
+        async updateIngredient(ingredient: Ingredient) {
+            await putIngredient(ingredient);
         },
     }
 })

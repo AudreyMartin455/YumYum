@@ -63,7 +63,6 @@ const deleteRecipe = async function (uuid: string) {
         </template>
         <template #content>
           <P-Chip class="chip" v-for="ingredient in recipe.amountIngredients" :label="ingredient.ingredient.label"/>
-          {{ recipe.uuid }}
         </template>
         <template #footer>
           <div class="flex place-content-end">

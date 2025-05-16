@@ -39,14 +39,16 @@ const unShowed = function () {
     </P-Message>
     <P-DataTable :value="ingredientStore.ingredients">
       <P-Column field="label" header="Label"></P-Column>
+      <P-Column field="uuid" header="Uuid"></P-Column>
       <P-Column field="tags" header="Tags">
         <template #body="slotProps">
           <P-Tag v-for="tag in slotProps.data.tags" :value="tag" severity="info" style="margin-right: 5px"/>
         </template>
       </P-Column>
-      <P-Column field="uuid" header="Actions">
+      <P-Column field="action" header="Actions">
         <template #body="slotProps">
-          <IconButton icon="edit" variant="filled" style="margin-right: 15px"/>
+          <IngredientForm :ingredient="slotProps.data"/>
+          <!--          <IconButton icon="edit" variant="filled" style="margin-right: 15px"/>-->
           <IconButton icon="delete" variant="filled" @click="deleteIngredient(slotProps.data.uuid)"/>
         </template>
       </P-Column>

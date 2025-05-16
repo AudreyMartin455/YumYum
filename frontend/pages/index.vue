@@ -4,9 +4,10 @@ const appConfig = useAppConfig()
 
 <template>
   <div>
-    <h1>Version actuelle 0.0.0</h1>
+    <h1>Version actuelle 1.0</h1>
     <P-TabView>
-      <P-TabPanel header="Version 1.x.x">
+      <P-TabPanel header="Version 1.0">
+
         <h4>Features</h4>
         <ul>
           <li style="color: darkgreen">Créer une recette</li>
@@ -14,7 +15,7 @@ const appConfig = useAppConfig()
           <li style="color: darkgreen">Supprimer une recette</li>
           <li style="color: darkgreen">Créer un ingrédient</li>
           <li style="color: darkgreen">Supprimer un ingrédient</li>
-          <li style="color: darkred">Modifier un ingrédient</li>
+          <li style="color: darkgreen">Modifier un ingrédient</li>
           <li style="color: darkgreen">Ajouter une recette au panier</li>
           <li style="color: darkgreen">Supprimer une recette au panier</li>
           <li style="color: darkgreen">Voir la liste des plats ajoutés au panier</li>
@@ -36,11 +37,6 @@ const appConfig = useAppConfig()
 
         <h4>Bug à corriger</h4>
         <ul>
-          <li style="color: darkred">Génération d'une liste de course. Dans le cas où on choisit deux unité différentes
-            pour un même
-            ingrédient,
-            200ml + 300g = 500ml
-          </li>
           <li style="color: darkgreen">Ajouter un bouton clear dans la liste de course ou reset dès qu'on regnère</li>
           <li style="color: darkgreen">Revoir le placement du bouton créer sur la liste d'ingrédient</li>
           <li style="color: darkgreen">Les ingredients se charge pas toujours chargé à la création/modification d'une
@@ -48,7 +44,7 @@ const appConfig = useAppConfig()
           </li>
           <li style="color: darkgreen">Les données d'une recette pas toujours chargé à la modification d'une recette
           </li>
-          <li style="color: darkred">Pouvoir mettre des décimales dans le montant d'un ingrédient</li>
+          <li style="color: darkgreen">Pouvoir mettre des décimales dans le montant d'un ingrédient</li>
           <li style="color: darkgreen">Dans la liste de course, pour les ingrédients en unité simple, apparition d'un
             undefined au lieu de rien du tout -> "1 undefined Oignon"
           </li>
@@ -57,7 +53,24 @@ const appConfig = useAppConfig()
           </li>
         </ul>
       </P-TabPanel>
-      <P-TabPanel header="Version 2.x.x">
+      <P-TabPanel header="Version 1.1">
+        <h4>Amélioration</h4>
+        <ul>
+          <li style="color: darkred">Faire un script pour faciliter le lancement de l'appli (j'en ai marre de faire des
+            start:dev à la main)
+          </li>
+        </ul>
+
+        <h4>Bug à corriger</h4>
+        <ul>
+          <li style="color: darkred">Génération d'une liste de course. Dans le cas où on choisit deux unité différentes
+            pour un même
+            ingrédient,
+            200ml + 300g = 500ml
+          </li>
+        </ul>
+      </P-TabPanel>
+      <P-TabPanel header="Version 2.x">
         <h4>Features</h4>
         <ul>
           <li style="color: darkred">Ajouter les cuillière à café et à soupe dans les unités d'ingrédient</li>
@@ -70,7 +83,7 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Indiquer le nombre de personne sur la recette</li>
         </ul>
       </P-TabPanel>
-      <P-TabPanel header="Version 3.x.x">
+      <P-TabPanel header="Version 3.x">
         <h4>Features</h4>
         <ul>
           <li style="color: darkred">Ajouter un calendrier</li>

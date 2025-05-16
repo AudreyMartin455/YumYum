@@ -11,6 +11,12 @@ export class IngredientService implements IIngredientService {
     constructor(private ingredientDao: IngredientDao, private recipeDao: RecipeDao) {
     }
 
+    update(ingredient: IngredientEntity): Observable<IngredientEntity> {
+        const updatedIngredient = this.ingredientDao.updateIngredient(ingredient);
+        this.recipeDao.getAllRecipe()
+        return this.ingredientDao.updateIngredient(ingredient)
+    }
+
     getAll(filters?: { [key: string]: any }): Observable<IngredientEntity[]> {
         return this.ingredientDao.getAllIngredient(filters);
     }

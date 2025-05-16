@@ -21,11 +21,15 @@ export class IngredientDao extends AbstractDao<IngredientEntity> {
         return this.findByUuid(uuid);
     }
 
-    public createIngredient(recipe: IngredientEntity): Observable<IngredientEntity> {
-        return this.create(recipe)
+    public createIngredient(ingredient: IngredientEntity): Observable<IngredientEntity> {
+        return this.create(ingredient)
     }
 
     public deleteIngredient(uuid: string): Observable<void> {
         return this.delete(uuid) as Observable<void>;
+    }
+
+    public updateIngredient(ingredient: IngredientEntity): Observable<IngredientEntity> {
+        return this.update(ingredient)
     }
 }
