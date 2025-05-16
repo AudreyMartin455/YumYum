@@ -3,10 +3,12 @@ import {useRecipeStore} from "~/stores/recipe";
 import {useCartStore} from "~/stores/cart";
 import type {Recipe} from "~/stores/models/recipe.model";
 import {useConfirm} from "primevue/useconfirm";
+import {useToast} from "primevue/usetoast";
 
 const confirm = useConfirm();
 const recipeStore = useRecipeStore()
 const cartStore = useCartStore();
+const toast = useToast();
 
 const props = defineProps(['dishType'])
 let baseRoute = '';
@@ -22,8 +24,9 @@ if (props.dishType === 'DESSERT') {
 
 const addToCart = function (recipe: Recipe) {
   cartStore.addToCart(recipe)
+  toast.add({severity: 'success', summary: 'Success', detail: 'Plat ajouté au panier', life: 3000});
 }
-
+ 
 const removeToCart = function (recipe: Recipe) {
   cartStore.removeToCart(recipe.uuid!!)
 }
@@ -45,6 +48,7 @@ const deleteRecipe = async function (uuid: string) {
 <template>
   <div>
     <!--    <Filters/>-->
+    <P-Toast/>
     <P-ConfirmDialog></P-ConfirmDialog>
     <div v-if="recipeStore.recipes?.length > 0" class="padding-md cards">
       <P-Card v-for="recipe in recipeStore.recipes" style="width: 30rem; overflow: hidden">

@@ -21,6 +21,7 @@ export const useCartStore = defineStore('cartStore', {
             return this.recipes.some(recipe => recipe.uuid === uuidRecipe)
         },
         generateAmountsIngredient() {
+            this.amountsIngredients = [];
             this.recipes.forEach(recipe => {
                 recipe.amountIngredients.forEach(amountIngredient => {
                     const indexIngredientAlreadyInCart = this.amountsIngredients.findIndex(amountIngredientInCart => {

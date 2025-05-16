@@ -25,4 +25,17 @@ defineProps(['variant', 'icon', 'type', 'disabled', 'size'])
   filter: brightness(90%);
 }
 
+.outlined {
+  background-color: transparent;
+  border: 1px solid var(--on_primary_action)
+}
+
+.ghosted {
+  background-color: transparent;
+  border: transparent;
+}
+
+.ghosted:not(:disabled):hover, .outlined:not(:disabled):hover {
+  filter: brightness(80%);
+}
 </style>

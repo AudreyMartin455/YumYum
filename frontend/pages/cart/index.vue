@@ -1,37 +1,83 @@
 <script setup lang="ts">
 import {useCartStore} from "~/stores/cart";
-import type {AmountIngredient} from "~/stores/models/amount-ingredient.model";
+import Heading from "~/components/design-system/Heading.vue";
+import Button from "~/components/design-system/Button.vue";
+import IconButton from "~/components/design-system/IconButton.vue";
+import Icon from "~/components/design-system/Icon.vue";
 
 const cartStore = useCartStore()
-const recipes = cartStore.getRecipes();
-let amountsIngredient: AmountIngredient[] = reactive([])
+let cartState = reactive({ingredientList: '', recipes: cartStore.getRecipes()})
 
 const generate = () => {
   cartStore.generateAmountsIngredient();
-  amountsIngredient = cartStore.getAmountsIngredient()
+  cartState.ingredientList = cartStore.getAmountsIngredient()
+      .map((amount) => `${amount.amount} ${amount.unit} ${amount.ingredient.label}`)
+      .join('\r')
 }
+
+const removeRecipe = (uuid: string) => {
+  cartStore.removeToCart(uuid)
+  cartState.recipes = cartStore.getRecipes();
+}
+
 </script>
 <template>
-  <P-Card style="max-width: 70%; margin: auto">
-    <P-Card>
-      
-    </P-Card>
-    <P-Card>
+  <div class="padding-xl card-container flex-row">
+    <P-Card class="recipe-card flex-col" style="min-width: 20%">
+      <template #content>
+        <!--        <Heading variant="h2" icon="edit_note">Recettes</Heading>-->
+        <!-- TODO evolve Heading to accept on_primary color -->
+        <div class="flex flex-row">
+          <div class="flex flex-col padding-md" style="margin-right: 8px">
+            <Icon style="margin-bottom: 5px;" icon="edit_note" variant="filled" size="xl" color="on_primary"
+                  class="icon"/>
+            <div class="underline"/>
+          </div>
+          <h2>Recettes</h2>
+        </div>
+        <div v-for="(recipe) in cartState.recipes" class="flex-row"
+             style="place-content: center space-between;align-items: center;">
+          <p>{{ recipe.label }}</p>
+          <IconButton variant="ghosted" icon="close" @click="removeRecipe(recipe.uuid!!)"/>
+        </div>
 
-    </P-Card>
-  </P-Card>
-  <div style="display: flex; flex-direction: row">
-    <div style="display: flex; flex-direction: column;width: 50%">
-      <span>Recette(s) choisie(s):</span>
-      <p v-for="recipe in recipes">- {{ recipe.label }}</p>
-      <P-Button label="Générer la liste de course" @click="generate"/>
-    </div>
-    <div style="display: flex; flex-direction: column; width: 50%">
-      <span>Liste de course:</span>
-      <p v-for="amount in cartStore.getAmountsIngredient()">
-        {{ `- ${amount.amount} ${amount.unit} ${amount.ingredient.label}` }} </p>
-    </div>
 
+      </template>
+    </P-Card>
+    <P-Card style="min-width: 50%">
+      <template #content>
+        <div class="flex-col">
+          <Heading variant="h2">Liste de course</Heading>
+
+          <div class="flex-row padding-sm margin-md" style="place-content: center space-between;align-items: center;">
+            <span>{{ cartState.recipes.length }} recette(s) sélectionnée(s)</span>
+            <Button variant="filled" @click="generate">Générer</Button>
+          </div>
+          <P-Textarea class="margin-md" v-model="cartState.ingredientList" style="resize: none" autoResize/>
+        </div>
+      </template>
+    </P-Card>
   </div>
-
 </template>
+
+<style>
+.card-container {
+  place-content: flex-start center;
+  align-items: stretch;
+}
+
+.recipe-card {
+  background-color: var(--primary);
+  color: var(--on_primary)
+}
+
+.underline {
+  height: 4px;
+  background-color: var(--secondary)
+}
+
+h2 {
+  font-size: 28px;
+  color: var(--on_primary)
+}
+</style>

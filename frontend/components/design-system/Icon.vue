@@ -3,7 +3,7 @@ const {variant, icon, size} = defineProps(['variant', 'icon', 'size', 'color'])
 </script>
 
 <template>
-  <i :class="[ variant === 'outlined' ? 'material-symbols-outlined' : 'material-icons', size, color]">{{
+  <i :class="[ variant === 'outlined' || variant === 'ghosted' ? 'material-symbols-outlined' : 'material-icons', size, color]">{{
       icon
     }}</i>
 </template>
@@ -31,6 +31,10 @@ const {variant, icon, size} = defineProps(['variant', 'icon', 'size', 'color'])
 
 .on_action {
   color: var(--on_action);
+}
+
+.on_primary {
+  color: var(--on_primary);
 }
 
 .on_background {

@@ -16,7 +16,7 @@ const appConfig = useAppConfig()
           <li style="color: darkgreen">Supprimer un ingrédient</li>
           <li style="color: darkred">Modifier un ingrédient</li>
           <li style="color: darkgreen">Ajouter une recette au panier</li>
-          <li style="color: darkred">Supprimer une recette au panier</li>
+          <li style="color: darkgreen">Supprimer une recette au panier</li>
           <li style="color: darkgreen">Voir la liste des plats ajoutés au panier</li>
           <li style="color: darkgreen">Générer une liste de course</li>
           <li style="color: darkgreen">Voir la liste de course</li>
@@ -25,10 +25,8 @@ const appConfig = useAppConfig()
         <h4>Amélioration</h4>
         <ul>
           <li style="color: darkgreen">Amélioration l'aspect visuel de la création/modification d'une recette</li>
-          <li style="color: darkred">Amélioration l'aspect visuel du panier et de la liste de course</li>
-          <li style="color: darkred">Indiquer le nombre de personne sur la recette</li>
-          <li style="color: darkred">Rajouter des messages success en cas d'ajout au panier et de génération de liste
-            réussi
+          <li style="color: darkgreen">Amélioration l'aspect visuel du panier et de la liste de course</li>
+          <li style="color: darkgreen">Rajouter des messages success en cas d'ajout au panier
           </li>
           <li style="color: darkgreen">Remplacer le selecteur d'ingrédient par un autcomplete ou permettre de faire une
             recherche dans le select
@@ -43,7 +41,7 @@ const appConfig = useAppConfig()
             ingrédient,
             200ml + 300g = 500ml
           </li>
-          <li style="color: darkred">Ajouter un bouton clear dans la liste de course ou reset dès qu'on regnère</li>
+          <li style="color: darkgreen">Ajouter un bouton clear dans la liste de course ou reset dès qu'on regnère</li>
           <li style="color: darkgreen">Revoir le placement du bouton créer sur la liste d'ingrédient</li>
           <li style="color: darkgreen">Les ingredients se charge pas toujours chargé à la création/modification d'une
             recette
@@ -69,6 +67,7 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Pagination dans la liste de recette</li>
           <li style="color: darkred">Pagination dans la liste d'ingrédients</li>
           <li style="color: darkred">Rajouter midi/soir sur une recette</li>
+          <li style="color: darkred">Indiquer le nombre de personne sur la recette</li>
         </ul>
       </P-TabPanel>
       <P-TabPanel header="Version 3.x.x">
