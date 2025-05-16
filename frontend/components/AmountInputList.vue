@@ -47,7 +47,12 @@ watch(amounts, (newAmounts) => {
     <Heading variant="h3" icon="edit_note">Ingrédients</Heading>
     <div v-for="(amount, index) in amounts">
       <div class="flex flex-row" style="margin: 10px">
-        <P-InputNumber placeholder="Quantité" v-model="amount.amount" style="margin-right: 8px; width: 75px"/>
+        <P-InputNumber :maxFractionDigits="1"
+                       fluid
+                       mode="decimal"
+                       placeholder="Quantité"
+                       v-model="amount.amount"
+                       style="margin-right: 8px; width: 75px"/>
         <P-Dropdown v-model="amount.unit" :options="units" placeholder="ml" optionLabel="label" optionValue="value"
                     style="margin-right: 8px; width: 60px"/>
         <P-AutoComplete v-model="amount.ingredient" optionLabel="label"

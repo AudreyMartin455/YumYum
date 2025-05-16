@@ -26,7 +26,7 @@ const addToCart = function (recipe: Recipe) {
   cartStore.addToCart(recipe)
   toast.add({severity: 'success', summary: 'Success', detail: 'Plat ajouté au panier', life: 3000});
 }
- 
+
 const removeToCart = function (recipe: Recipe) {
   cartStore.removeToCart(recipe.uuid!!)
 }
@@ -63,6 +63,7 @@ const deleteRecipe = async function (uuid: string) {
         </template>
         <template #content>
           <P-Chip class="chip" v-for="ingredient in recipe.amountIngredients" :label="ingredient.ingredient.label"/>
+          {{ recipe.uuid }}
         </template>
         <template #footer>
           <div class="flex place-content-end">
