@@ -1,0 +1,1 @@
+export type DishesType = 'DISH' | 'DESSERT' | 'BREAKFAST'
