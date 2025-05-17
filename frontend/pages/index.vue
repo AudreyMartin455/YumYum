@@ -59,6 +59,8 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Faire un script pour faciliter le lancement de l'appli (j'en ai marre de faire des
             start:dev à la main)
           </li>
+          <li style="color: darkred">Utiliser une autre techno de db ?</li>
+          <li style="color: darkred">Menu Latéral ?</li>
         </ul>
 
         <h4>Bug à corriger</h4>
@@ -67,6 +69,12 @@ const appConfig = useAppConfig()
             pour un même
             ingrédient,
             200ml + 300g = 500ml
+          </li>
+          <li style="color: darkred">Quand on ajoute un nouvel ingrédient à la liste, et si on modifie celui du dessous
+            il ya un décalage
+          </li>
+          <li style="color: darkred">Quand on modifie un ingrédient déjà utilisé dans une recette, l'ingredient dans la
+            recette n'est pas mise à jour
           </li>
         </ul>
       </P-TabPanel>
@@ -89,8 +97,6 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Ajouter un calendrier</li>
           <li style="color: darkred">Ajouter la possibilité de lier des panier au calendrier</li>
           <li style="color: darkred">Ajouter calorie/protéine par recette</li>
-          <li style="color: darkred">Créer un executable</li>
-          <li style="color: darkred">Dark mode</li>
           <li style="color: darkred">Créer une view pour une recette et pouvoir la passer en mode édition (plutôt que
             avoir une page modification directement)
           </li>

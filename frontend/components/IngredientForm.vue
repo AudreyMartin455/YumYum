@@ -28,8 +28,6 @@ const submit = async function () {
   <IconButton v-if="ingredient" icon="edit" variant="filled" style="margin-right: 15px" @click="visible = true"/>
 
   <P-Dialog v-model:visible="visible" modal :header="dialogTitle" :style="{ width: '50rem' }">
-    {{ form.uuid }}
-    {{ form.label }}
     <form class="padding-xl" style="margin-top: 16px" @submit.prevent="submit">
 
       <P-InputText placeholder="Label" v-model="form.label" :style="{ width: '30rem'}"/>
