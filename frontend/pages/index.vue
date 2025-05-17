@@ -59,6 +59,7 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Faire un script pour faciliter le lancement de l'appli (j'en ai marre de faire des
             start:dev à la main)
           </li>
+          <li style="color: darkred">Utiliser une autre techno de db ?</li>
         </ul>
 
         <h4>Bug à corriger</h4>
