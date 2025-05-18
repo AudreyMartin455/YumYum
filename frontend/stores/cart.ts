@@ -22,21 +22,19 @@ export const useCartStore = defineStore('cartStore', {
         },
         generateAmountsIngredient() {
             this.amountsIngredients = [];
-            this.recipes.forEach(recipe => {
+            this.getRecipes().forEach(recipe => {
                 recipe.amountIngredients.forEach(amountIngredient => {
                     const indexIngredientAlreadyInCart = this.amountsIngredients.findIndex(amountIngredientInCart => {
-                        return amountIngredient.ingredient.uuid === amountIngredientInCart.ingredient.uuid
+                        return amountIngredient.ingredient.uuid === amountIngredientInCart.ingredient.uuid && amountIngredient.unit === amountIngredientInCart.unit
                     })
                     if (indexIngredientAlreadyInCart >= 0) {
-                        this.amountsIngredients = this.amountsIngredients.map((amountIngredientInCart, index) => {
-                            if (index === indexIngredientAlreadyInCart) {
-                                amountIngredientInCart.amount = amountIngredientInCart.amount + amountIngredient.amount
-                            }
-                            return amountIngredientInCart
-                        })
+                        this.amountsIngredients[indexIngredientAlreadyInCart].amount =
+                            this.amountsIngredients[indexIngredientAlreadyInCart].amount +
+                            Number(amountIngredient.amount.toString())
                     } else {
-                        this.amountsIngredients.push(amountIngredient)
+                        this.amountsIngredients.push(JSON.parse(JSON.stringify(amountIngredient)))
                     }
+                    this.amountsIngredients.sort((a, b) => a.ingredient.label.localeCompare(b.ingredient.label))
                 })
             })
         },
@@ -45,3 +43,4 @@ export const useCartStore = defineStore('cartStore', {
         }
     }
 })
+
