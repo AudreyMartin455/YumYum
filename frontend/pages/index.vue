@@ -73,7 +73,8 @@ const appConfig = useAppConfig()
           <li style="color: darkred">Quand on ajoute un nouvel ingrédient à la liste, et si on modifie celui du dessous
             il ya un décalage
           </li>
-          <li style="color: darkred">Quand on modifie un ingrédient déjà utilisé dans une recette, l'ingredient dans la
+          <li style="color: darkgreen">Quand on modifie un ingrédient déjà utilisé dans une recette, l'ingredient dans
+            la
             recette n'est pas mise à jour
           </li>
         </ul>

@@ -7,7 +7,7 @@ import {IngredientMapper} from "../mappers/ingredient.mapper";
 
 
 @ApiTags('Ingredient Controller')
-@Controller('ingredient')
+@Controller('ingredients')
 export class IngredientController {
     constructor(@Inject(IIngredientService) private readonly ingredientService: IIngredientService, private readonly ingredientMapper: IngredientMapper) {
     }

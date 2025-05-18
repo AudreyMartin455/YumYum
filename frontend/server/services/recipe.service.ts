@@ -5,21 +5,21 @@ import axios, {AxiosResponse} from "axios";
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export const getRecipes = async (type: DishesType): Promise<AxiosResponse<Recipe[]>> => {
-    return await axios.get('http://localhost:3000/recipe?type=' + type);
+    return await axios.get('http://localhost:3000/recipes?type=' + type);
 }
 
 export const getRecipe = async (uuid: string): Promise<AxiosResponse<Recipe>> => {
-    return await axios.get('http://localhost:3000/recipe/' + uuid);
+    return await axios.get('http://localhost:3000/recipes/' + uuid);
 }
 
 export const postRecipe = async (body: Recipe): Promise<AxiosResponse<Recipe>> => {
-    return await axios.post('http://localhost:3000/recipe', body);
+    return await axios.post('http://localhost:3000/recipes', body);
 }
 
 export const updateRecipe = async (body: Recipe): Promise<AxiosResponse<Recipe>> => {
-    return await axios.put(`http://localhost:3000/recipe/${body.uuid}`, body);
+    return await axios.put(`http://localhost:3000/recipes/${body.uuid}`, body);
 }
 
 export const deleteRecipe = async (uuid: string): Promise<AxiosResponse<void>> => {
-    return await axios.delete(`http://localhost:3000/recipe/${uuid}`);
+    return await axios.delete(`http://localhost:3000/recipes/${uuid}`);
 }

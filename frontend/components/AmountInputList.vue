@@ -37,7 +37,6 @@ const search = (event: any) => {
   searchedIngredient.value = ingredients.value.filter(ingredient => ingredient.label.includes(event.query))
 }
 watch(amounts, (newAmounts) => {
-  console.log(newAmounts)
   emits('onChange', newAmounts)
 })
 </script>
