@@ -11,7 +11,7 @@ let cartState = reactive({ingredientList: '', recipes: cartStore.getRecipes()})
 const generate = () => {
   cartStore.generateAmountsIngredient();
   cartState.ingredientList = cartStore.getAmountsIngredient()
-      .map((amount) => `${amount.amount} ${amount.unit} ${amount.ingredient.label}`)
+      .map((amount) => `${amount.amount} ${amount.unit.toLowerCase()} ${amount.ingredient.label}`)
       .join('\r')
 }
 

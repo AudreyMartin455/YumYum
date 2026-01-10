@@ -20,7 +20,7 @@ import {ApiConsumes, ApiOperation, ApiQuery, ApiTags} from "@nestjs/swagger";
 import {DishesType} from "../entities/dishes.type";
 
 @ApiTags('Recipe Controller')
-@Controller('recipe')
+@Controller('recipes')
 export class RecipeController {
     constructor(@Inject(IRecipeService) private readonly recipeService: IRecipeService, private readonly recipeMapper: RecipeMapper) {
     }

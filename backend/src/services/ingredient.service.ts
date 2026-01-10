@@ -1,5 +1,5 @@
 import {ConflictException, Injectable} from "@nestjs/common";
-import {mergeMap, Observable} from "rxjs";
+import {EMPTY, forkJoin, map, mergeMap, Observable, of} from "rxjs";
 import {IIngredientService} from "./iingredient.service";
 import {IngredientDao} from "../repositories/ingredient.dao";
 import {IngredientEntity} from "../entities/ingredient.entity";
@@ -12,9 +12,23 @@ export class IngredientService implements IIngredientService {
     }
 
     update(ingredient: IngredientEntity): Observable<IngredientEntity> {
-        const updatedIngredient = this.ingredientDao.updateIngredient(ingredient);
-        this.recipeDao.getAllRecipe()
-        return this.ingredientDao.updateIngredient(ingredient)
+        return this.ingredientDao.updateIngredient(ingredient).pipe(
+            mergeMap(() => {
+                return this.recipeDao.getAllRecipe({"amountIngredients.ingredient.uuid": ingredient.uuid})
+            }),
+            mergeMap(recipes => {
+                if (recipes.length === 0) return of(EMPTY);
+                const observables = recipes.map(recipe => this.recipeDao.updateRecipe({
+                    ...recipe,
+                    amountIngredients: recipe.amountIngredients.map(amount => amount.ingredient.uuid === ingredient.uuid ? {
+                        ...amount,
+                        ingredient
+                    } : amount)
+                }))
+                return forkJoin(observables);
+            }),
+            map(() => ingredient)
+        );
     }
 
     getAll(filters?: { [key: string]: any }): Observable<IngredientEntity[]> {
